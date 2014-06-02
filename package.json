@@ -1,0 +1,25 @@
+{
+  "name": "startserver",
+  "version": "0.0.1",
+  "description": "startserver",
+  "bin": {
+    "seat": "./bin/startserver"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xudafeng/startserver.git"
+  },
+  "dependencies": {
+  },
+  "keywords": [
+  ],
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "homepage": "https://github.com/xudafeng/startserver",
+  "author": "xudafeng",
+  "email": "xudafeng[at]126.com",
+  "blog": "http://xdf.me",
+  "license": "MIT"
+}
