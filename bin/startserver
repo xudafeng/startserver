@@ -23,7 +23,7 @@ var path = require('path');
 
 var server = new StartServer();
 
-server.use();
+server.bundle();
 
 server.listen(8888, function(){
 
