@@ -11,6 +11,7 @@
     "url": "git://github.com/xudafeng/startserver.git"
   },
   "dependencies": {
+    "datautil":"0.0.3"
   },
   "keywords": [
   ],
