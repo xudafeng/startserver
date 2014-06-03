@@ -1,4 +1,7 @@
 var StartServer = require('../');
 
-var start = new StartServer();
+var server = new StartServer();
 
+server.listen(8888, function(){
+  
+});
