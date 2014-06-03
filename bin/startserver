@@ -18,6 +18,8 @@ var util = require('./util');
 var ipv4 = require('./ipv4');
 var StartServer = require('../');
 var debug = require('debug')('bin/startserver:');
+var fs = require('fs');
+var path = require('path');
 
 var server = new StartServer();
 
