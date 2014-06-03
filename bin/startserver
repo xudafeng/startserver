@@ -14,4 +14,13 @@
 
 "use strict";
 
+var util = require('./util');
+var ipv4 = require('./ipv4');
+var StartServer = require('../');
+var debug = require('debug')('bin/startserver:');
 
+var server = new StartServer();
+
+server.listen(8888, function(){
+
+});
