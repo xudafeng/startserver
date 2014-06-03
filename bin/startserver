@@ -21,6 +21,8 @@ var debug = require('debug')('bin/startserver:');
 
 var server = new StartServer();
 
+server.use();
+
 server.listen(8888, function(){
 
 });
