@@ -21,22 +21,15 @@ var debug = require('debug')('bin/startserver:');
 var fs = require('fs');
 var path = require('path');
 var DataBase = require('datautil');
+var statics = require('../lib/middleware/static');
+var router = require('../lib/middleware/router');
 
 var server = new StartServer();
 
 util.merge(server, DataBase);
 
-server.bundle();
-
-server.set('woshi',123123);
-
-console.log(server.get('woshi'))
-
-server.on('hao',function(e){
-  console.log(e)
-})
-
-server.emit('hao','99999999999999')
+server.bundle(statics);
+server.bundle(router);
 
 server.listen(8888, function(){
 
