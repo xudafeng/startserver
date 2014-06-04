@@ -2,9 +2,8 @@
   "name": "startserver",
   "version": "0.0.1",
   "description": "startserver",
-  "bin": {
-    "seat": "./bin/startserver"
-  },
+  "preferGlobal": true,
+  "bin": {"startserver": "index.js"},
   "main": "index.js",
   "repository": {
     "type": "git",
