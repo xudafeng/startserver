@@ -18,20 +18,26 @@ var util = require('xutil');
 var ipv4 = require('ipv4');
 var StartServer = require('../');
 var debug = require('debug')('bin/startserver:');
-var fs = require('fs');
-var path = require('path');
+var exec = require('child_process').exec;
+var spawn = require('child_process').spawn;
 var DataBase = require('datautil');
 var statics = require('../lib/middleware/static');
 var directory = require('../lib/middleware/directory');
+var platform = process.platform;
 
 var server = new StartServer();
 
 util.merge(server, DataBase);
 
-console.log(ipv4)
 server.bundle(statics);
 server.bundle(directory);
 
 server.listen(8888, function(){
-
+  var url = "http://" + ipv4 + ":8888";
+  if(platform === 'win32'){
+    exec('start ' + url);
+  }else{
+    exec('open ' + url);
+  }
+  console.log("Running at " + url);
 });
