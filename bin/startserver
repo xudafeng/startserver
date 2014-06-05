@@ -22,14 +22,14 @@ var fs = require('fs');
 var path = require('path');
 var DataBase = require('datautil');
 var statics = require('../lib/middleware/static');
-var router = require('../lib/middleware/router');
+var directory = require('../lib/middleware/directory');
 
 var server = new StartServer();
 
 util.merge(server, DataBase);
 
 server.bundle(statics);
-server.bundle(router);
+server.bundle(directory);
 
 server.listen(8888, function(){
 
