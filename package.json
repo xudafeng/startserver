@@ -14,7 +14,8 @@
   "dependencies": {
     "datautil":"0.0.3",
     "xutil":"0.0.2",
-    "ipv4":"0.0.2"
+    "ipv4":"0.0.2",
+    "minitpl":"0.0.2"
   },
   "keywords": [
   ],
