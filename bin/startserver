@@ -12,7 +12,7 @@
  *
  * ================================================================ */
 
-"use strict";
+'use strict';
 
 var util = require('xutil');
 var ipv4 = require('ipv4');
@@ -24,6 +24,7 @@ var DataBase = require('datautil');
 var statics = require('../lib/middleware/static');
 var directory = require('../lib/middleware/directory');
 var platform = process.platform;
+var port = process.argv[2] || 8080;
 
 var server = new StartServer();
 
@@ -32,12 +33,14 @@ util.merge(server, DataBase);
 server.bundle(statics);
 server.bundle(directory);
 
-server.listen(8888, function(){
-  var url = "http://" + ipv4 + ":8888";
+server.listen(port, ipv4, function(){
+  var url = 'http://' + ipv4 + ':' + port;
   if(platform === 'win32'){
     exec('start ' + url);
+  }else if(platform === 'linux'){
+    //todo cmd = 'type -P gnome-open &>/dev/null  && gnome-open ';
   }else{
     exec('open ' + url);
   }
-  console.log("Running at " + url);
+  console.log('Running at ' + url);
 });
