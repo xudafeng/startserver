@@ -17,7 +17,6 @@
 var util = require('xutil');
 var ipv4 = require('ipv4');
 var StartServer = require('../');
-var debug = require('debug')('bin/startserver:');
 var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
 var DataBase = require('datautil');
