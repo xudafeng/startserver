@@ -1,10 +1,10 @@
 {
   "name": "startserver",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "startserver",
   "preferGlobal": true,
   "bin": {
-    "startserver": "index.js"
+    "startserver": "./bin/startserver"
   },
   "main": "index.js",
   "repository": {
