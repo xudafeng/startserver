@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+/* ================================================================
+ * startserver by xdf(xudafeng[at]126.com)
+ *
+ * first created at : Mon Jun 02 2014 20:15:51 GMT+0800 (CST)
+ *
+ * ================================================================
+ * Copyright 2013 xdf
+ *
+ * Licensed under the MIT License
+ * You may not use this file except in compliance with the License.
+ *
+ * ================================================================ */
+
+'use strict';
+
+var util = require('xutil');
+var ipv4 = require('ipv4');
+var StartServer = require('../');
+var exec = require('child_process').exec;
+var spawn = require('child_process').spawn;
+var DataBase = require('datautil');
+var statics = require('../lib/middleware/static');
+var directory = require('../lib/middleware/directory');
+var platform = process.platform;
+var port = process.argv[2] || 8080;
+
+var server = new StartServer();
+
+util.merge(server, DataBase);
+
+server.bundle(statics);
+server.bundle(directory);
+
+server.listen(port, ipv4, function(){
+  var url = 'http://' + ipv4 + ':' + port;
+  if(platform === 'win32'){
+    exec('start ' + url);
+  }else if(platform === 'linux'){
+    //todo cmd = 'type -P gnome-open &>/dev/null  && gnome-open ';
+  }else{
+    exec('open ' + url);
+  }
+  console.log('Running at ' + url);
+});
