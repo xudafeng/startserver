@@ -1,7 +1,7 @@
 startserver
 ===
 
-by xdf
+simple node server
 
 ## Installment
 
@@ -12,7 +12,7 @@ $ sudo npm install startserver -g
 ## Quick Start
 
 ```bash
-$ startserver xdf
+$ startserver 3333
 ```
 
 ## License
