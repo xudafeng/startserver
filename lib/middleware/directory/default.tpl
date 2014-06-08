@@ -14,8 +14,24 @@
 </style>
 </head>
 <body>
-  <ul><#each val,index in $list#>
-    <li><a href="<#=$val.path#>"><#=$val.name#></a></li><#/each#>
-  </ul>
+<h1>Index of <#=$path#></h1>
+
+<table>
+    <thead>
+    <tr>
+        <th><a href="?C=N">Name</a></th>
+        <th><a href="?C=M">Last modified</a></th>
+        <th><a href="?C=S">Size</a></th>
+    </thead>
+    <tbody>
+    <#each val,index in $list#>
+        <tr>
+            <td><a href="<#=$val.path#>"><#=$val.name#></a></td>
+            <td><#=$val.lastModified#></td>
+            <td><#=$val.size#></td>
+        </tr>
+    <#/each#>
+    </tbody>
+</table>
 </body>
 </html>
