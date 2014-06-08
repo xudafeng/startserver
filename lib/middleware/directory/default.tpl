@@ -3,15 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-<style>
-  body{
-    background:#000;
-    color:#6cce03;
-  }
-  a{
-    color:#6cce03;
-  }
-</style>
 </head>
 <body>
 <h1>Index of <#=$path#></h1>
