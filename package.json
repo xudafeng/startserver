@@ -3,7 +3,9 @@
   "version": "0.0.7",
   "description": "startserver",
   "preferGlobal": true,
-  "bin": {"startserver": "index.js"},
+  "bin": {
+    "startserver": "./bin/startserver"
+  },
   "main": "index.js",
   "repository": {
     "type": "git",
