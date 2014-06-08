@@ -23,6 +23,13 @@
         <th><a href="?C=M">Last modified</a></th>
         <th><a href="?C=S">Size</a></th>
     </thead>
+    <#if $parentDir#>
+    <tbody>
+    <tr>
+        <td colspan="3"><a href="<#=$parentDir#>">Parent Directory</a></td>
+    </tr>
+    </tbody>
+    <#/if#>
     <tbody>
     <#each val,index in $list#>
         <tr>
