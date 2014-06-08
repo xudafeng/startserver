@@ -1,7 +1,7 @@
 startserver
 ===
 
-simple node server
+A simple http server witch can be used like `python -m SimpleHTTPServer` and be more easy.
 
 ## Installment
 
@@ -12,14 +12,14 @@ $ sudo npm install startserver -g
 ## Quick Start
 
 ```bash
-$ startserver 3333
+$ startserver 8888
 ```
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2013 xdf
+Copyright (c) 2013 xdf & karoo
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
