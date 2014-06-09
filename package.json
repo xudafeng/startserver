@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "startserver",
   "preferGlobal": true,
   "bin": {
@@ -17,8 +17,7 @@
     "ipv4":"0.0.2",
     "minitpl":"0.0.2"
   },
-  "keywords": [
-  ],
+  "keywords": ["server","httpserver","demo","dev"],
   "devDependencies": {
     "mocha": "*"
   },
