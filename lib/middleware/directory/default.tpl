@@ -8,28 +8,28 @@
 <h1>Index of <#=$path#></h1>
 
 <table>
-    <thead>
+  <thead>
     <tr>
-        <th><a href="?C=N">Name</a></th>
-        <th><a href="?C=M">Last modified</a></th>
-        <th><a href="?C=S">Size</a></th>
-    </thead>
-    <#if $parentDir#>
-    <tbody>
+    <th>Name</th>
+    <th>Last modified</th>
+    <th>Size</th>
+  </thead>
+  <#if $parentDir#>
+  <tbody>
     <tr>
-        <td colspan="3"><a href="<#=$parentDir#>">Parent Directory</a></td>
+      <td colspan="3"><a href="<#=$parentDir#>">Parent Directory</a></td>
     </tr>
-    </tbody>
-    <#/if#>
-    <tbody>
-    <#each val,index in $list#>
-        <tr>
-            <td><a href="<#=$val.path#>"><#=$val.name#></a></td>
-            <td><#=$val.lastModified#></td>
-            <td><#=$val.size#></td>
-        </tr>
-    <#/each#>
-    </tbody>
+  </tbody>
+  <#/if#>
+  <tbody>
+  <#each val,index in $list#>
+    <tr>
+      <td><a href="<#=$val.path#>"><#=$val.name#></a></td>
+      <td><#=$val.lastModified#></td>
+      <td><#=$val.size#></td>
+    </tr>
+  <#/each#>
+  </tbody>
 </table>
 </body>
 </html>
