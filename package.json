@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.0.9",
+  "version": "0.0.13",
   "description": "startserver",
   "preferGlobal": true,
   "bin": {
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "datautil":"0.0.3",
-    "xutil":"0.0.2",
+    "xutil":"0.0.5",
     "ipv4":"0.0.2",
     "minitpl":"0.0.2"
   },
