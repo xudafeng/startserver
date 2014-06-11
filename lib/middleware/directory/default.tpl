@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<style>
+    thead th{
+        height: 40px;
+        border-bottom: 1px #ccc solid;
+    }
+    td{
+        padding: 8px 12px 0 12px;
+    }
+</style>
 </head>
 <body>
 <h1>Index of <#=$path#></h1>
