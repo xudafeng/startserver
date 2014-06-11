@@ -22,6 +22,7 @@ var spawn = require('child_process').spawn;
 var DataBase = require('datautil');
 var statics = require('../lib/middleware/static');
 var directory = require('../lib/middleware/directory');
+var markdown = require('../lib/middleware/markdown');
 var platform = process.platform;
 var port = process.argv[2] || 8080;
 
@@ -29,6 +30,7 @@ var server = new StartServer();
 
 util.merge(server, DataBase);
 
+server.bundle(markdown);
 server.bundle(statics);
 server.bundle(directory);
 
