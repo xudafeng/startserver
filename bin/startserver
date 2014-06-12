@@ -16,6 +16,7 @@
 
 var util = require('xutil');
 var ipv4 = require('ipv4');
+var color = require('colorx');
 var StartServer = require('../');
 var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
@@ -23,6 +24,7 @@ var DataBase = require('datautil');
 var statics = require('../lib/middleware/static');
 var directory = require('../lib/middleware/directory');
 var markdown = require('../lib/middleware/markdown');
+var logger = require('../lib/middleware/logger');
 var platform = process.platform;
 var port = process.argv[2] || 8080;
 
@@ -30,6 +32,7 @@ var server = new StartServer();
 
 util.merge(server, DataBase);
 
+server.bundle(logger);
 server.bundle(markdown);
 server.bundle(statics);
 server.bundle(directory);
@@ -43,5 +46,6 @@ server.listen(port, ipv4, function(){
   }else{
     exec('open ' + url);
   }
-  console.log('Running at ' + url);
+  url = 'http://' + ipv4.yellow() + ':' + port.cyan();
+  console.log('Running at '.red() + url);
 });
