@@ -15,7 +15,6 @@
 </head>
 <body>
 <h1>Index of <#=$path#></h1>
-
 <table>
   <thead>
     <tr>
