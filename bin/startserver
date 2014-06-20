@@ -46,6 +46,6 @@ server.listen(port, ipv4, function(){
   }else{
     exec('open ' + url);
   }
-  url = 'http://' + ipv4.yellow() + ':' + port.cyan();
-  console.log('Running at '.red() + url);
+  url = 'http://' + ipv4.yellow + ':' + port.blue;
+  console.log('Running at '.red + url);
 });
