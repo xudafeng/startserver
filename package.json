@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.1.5",
+  "version": "0.1.8",
   "description": "startserver",
   "preferGlobal": true,
   "bin": {
@@ -15,13 +15,16 @@
     "xutil":"0.0.5",
     "ipv4":"0.0.2",
     "minitpl":"0.0.2",
-    "markdown": "0.5.0",
+    "marked": "0.3.2",
     "colorx": "0.0.5",
     "logx": "0.0.3"
   },
   "keywords": ["server","httpserver","demo","dev"],
   "devDependencies": {
     "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha"
   },
   "homepage": "https://github.com/xudafeng/startserver",
   "author": "xudafeng",
