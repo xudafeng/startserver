@@ -15,7 +15,7 @@
 'use strict';
 
 var util = require('xutil');
-var ipv4 = require('ipv4');
+var ipv4 = require('ipv4') || 'localhost';
 var color = require('colorx');
 var StartServer = require('../');
 var exec = require('child_process').exec;
