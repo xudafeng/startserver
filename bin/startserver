@@ -15,7 +15,7 @@
 'use strict';
 
 var util = require('xutil');
-var ipv4 = require('ipv4');
+var ipv4 = require('ipv4') || 'localhost';
 var color = require('colorx');
 var StartServer = require('../');
 var exec = require('child_process').exec;
@@ -36,13 +36,8 @@ server.bundle(directory);
 
 server.listen(port, ipv4, function(){
   var url = 'http://' + ipv4 + ':' + port;
-  if(platform === 'win32'){
-    exec('start ' + url);
-  }else if(platform === 'linux'){
-    //todo cmd = 'type -P gnome-open &>/dev/null  && gnome-open ';
-  }else{
-    exec('open ' + url);
-  }
+  var opener = platform === 'win32' ? 'start' : platform === 'linux' ? 'xdg-open' : 'open';
+  exec(opener + ' ' + url);
   url = 'http://' + ipv4.yellow + ':' + port.blue;
   console.log('Running at '.red + url);
 });
