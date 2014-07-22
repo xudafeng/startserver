@@ -3,32 +3,44 @@ var should = chai.should();
 var http = require('http');
 var staticModel = require('../lib/middleware/static');
 
-
 describe('lib/middleware/static', function () {
-    var done = false;
-    var config = {
-      req: {
-        url: 'http://127.0.0.1:3333/test/files/test.txt'
-      },
-      next: function () {
-        done = true;
-      }
-    }
-    var server = http.createServer();
-    server.listen('3333', 'http://127.0.0.1');
 
-    var req = http.request({
-      hostname: 'http://127.0.0.1',
-      port: '3333',
-      path: '/test/files/test.txt'
-    });
+  it('static should be working ok', function (done) {
 
-    it('static should be working ok', function () {
-      staticModel(config.req, req, function(){
-        done = true;
-        req.end();
+    var proxy = http.createServer(function( request, response ){
+    staticModel(request, response, function(){}, done());
+    proxy.close();
+    }).listen(3333);
+
+    http.request('http://127.0.0.1:3333/test/files/test.txt').end();
+  });
+
+  it('Content-Type Must be 200', function (done) {
+    var proxy = http.createServer(function( request, response ){
+      response.statusCode.should.equal(200);
+      proxy.close();
+      done();
+
+    }).listen(3333);
+
+    http.request('http://127.0.0.1:3333/test/files/test.txt').end();
+
+  });
+
+  it('Content-Type Must be 404', function (done) {
+    var proxy = http.createServer(function( request, response ){
+      staticModel(request, response, function(){
+        (response._header.indexOf(404) != '-1').should.equal(true);
+        (response._header.indexOf('text/plain') != '-1').should.equal(true);
+        response.end();
+        done();
       });
-      done.should.equal(false);
-    });
+      proxy.close();
+
+    }).listen(3333);
+
+    http.request('http://127.0.0.1:3333/test/files/test.html').end();
+
+  });
 
 });
