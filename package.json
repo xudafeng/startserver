@@ -21,7 +21,8 @@
   },
   "keywords": ["server","httpserver","demo","dev"],
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "should": "*"
   },
   "scripts": {
     "test": "mocha"
