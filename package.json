@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "startserver",
   "preferGlobal": true,
   "bin": {
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "xutil":"0.0.5",
-    "ipv4":"0.0.2",
+    "ipv4":"0.0.4",
     "minitpl":"0.0.2",
     "marked": "0.3.2",
     "colorx": "0.0.5",
