@@ -4,6 +4,9 @@
   "description": "startserver",
   "preferGlobal": true,
   "bin": {
+    "s": "./bin/startserver",
+    "start": "./bin/startserver",
+    "server": "./bin/startserver",
     "startserver": "./bin/startserver"
   },
   "main": "index.js",
