@@ -1,3 +1,5 @@
+'use strict';
+
 var StartServer = require('../');
 
 describe('startserver.js', function () {
