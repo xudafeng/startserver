@@ -1,9 +1,12 @@
 {
   "name": "startserver",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "startserver",
   "preferGlobal": true,
   "bin": {
+    "s": "./bin/startserver",
+    "start": "./bin/startserver",
+    "server": "./bin/startserver",
     "startserver": "./bin/startserver"
   },
   "main": "index.js",
@@ -13,7 +16,7 @@
   },
   "dependencies": {
     "xutil":"0.0.5",
-    "ipv4":"0.0.2",
+    "ipv4":"0.0.4",
     "minitpl":"0.0.2",
     "marked": "0.3.2",
     "colorx": "0.0.5",
@@ -22,13 +25,14 @@
   "keywords": ["server","httpserver","demo","dev"],
   "devDependencies": {
     "mocha": "*",
-    "chai": "*"
+    "should": "*"
   },
   "scripts": {
     "test": "mocha"
   },
   "homepage": "https://github.com/xudafeng/startserver",
   "author": "xudafeng",
+  "contributors": ["karoo"],
   "email": "xudafeng[at]126.com",
   "blog": "http://xdf.me",
   "license": "MIT"
