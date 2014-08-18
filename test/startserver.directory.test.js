@@ -1,5 +1,5 @@
-var chai = require('chai');
-var should = chai.should();
+'use strict';
+
 var http = require('http');
 var directoryModel = require('../lib/middleware/directory');
 
@@ -16,7 +16,7 @@ describe('lib/middleware/directory', function () {
       proxy.close();
     }).listen(3333);
 
-    http.request('http://127.0.0.1:3333/test/files/dir/').end();
+    http.request('http://127.0.0.1:3333/test/files/').end();
   });
 
   it('file just return and noting to do', function (done) {
@@ -57,7 +57,4 @@ describe('lib/middleware/directory', function () {
 
     http.request('http://127.0.0.1:3333/test/files/').end();
   });
-
-
-
 });
