@@ -18,12 +18,28 @@ process.title = 'startserver';
 
 var util = require('xutil');
 var ipv4 = require('ipv4') || 'localhost';
-var color = require('colorx');
 var StartServer = require('../');
 var exec = require('child_process').exec;
 var middleware = require('../lib/middleware');
 var platform = process.platform;
-var port = process.argv[2] || 8080;
+var program = require('commander');
+require('colorx');
+
+program
+  .option('-v, --version', 'output version infomation')
+  .on('version', function() {
+    console.log('\n  ' + require('../package').version.blue + '\n');
+    process.exit(0);
+  })
+  .usage('[port]')
+  .parse(process.argv);
+
+var port = parseInt(program.args[0] || 8080);
+
+if(isNaN(port)) {
+  console.log('\n  Arguments Error.'.red + '\n');
+  return program.help();
+}
 
 var server = new StartServer();
 

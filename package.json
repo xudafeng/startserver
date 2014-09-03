@@ -20,7 +20,8 @@
     "minitpl":"0.0.2",
     "marked": "0.3.2",
     "colorx": "0.0.5",
-    "logx": "0.0.3"
+    "logx": "0.0.3",
+    "commander": "*"
   },
   "keywords": ["server","httpserver","demo","dev"],
   "devDependencies": {
