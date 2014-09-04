@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "description": "startserver",
   "preferGlobal": true,
   "bin": {
@@ -15,7 +15,7 @@
     "url": "git://github.com/xudafeng/startserver.git"
   },
   "dependencies": {
-    "xutil":"0.0.5",
+    "xutil":"0.1.1",
     "ipv4":"0.0.4",
     "minitpl":"0.0.2",
     "marked": "0.3.2",
