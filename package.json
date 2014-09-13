@@ -1,10 +1,9 @@
 {
   "name": "startserver",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "startserver",
   "preferGlobal": true,
   "bin": {
-    "s": "./bin/startserver",
     "start": "./bin/startserver",
     "server": "./bin/startserver",
     "startserver": "./bin/startserver"
