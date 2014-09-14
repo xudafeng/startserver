@@ -36,7 +36,7 @@ program
 
 var port = parseInt(program.args[0] || 8080);
 
-if(isNaN(port)) {
+if (isNaN(port)) {
   console.log('\n  Arguments Error.'.red + '\n');
   return program.help();
 }
@@ -45,7 +45,7 @@ var server = new StartServer();
 
 middleware(server);
 
-server.listen(port, ipv4, function(){
+server.listen(port, ipv4, function() {
   var url = 'http://' + ipv4 + ':' + port;
   var opener = platform === 'win32' ? 'start' : platform === 'linux' ? 'xdg-open' : 'open';
   exec(opener + ' ' + url);
