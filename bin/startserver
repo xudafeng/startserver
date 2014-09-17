@@ -45,7 +45,7 @@ var server = new StartServer();
 
 middleware(server);
 
-server.listen(port, ipv4, function() {
+server.listen(port, ipv4, function(e) {
   var url = 'http://' + ipv4 + ':' + port;
   var opener = platform === 'win32' ? 'start' : platform === 'linux' ? 'xdg-open' : 'open';
   exec(opener + ' ' + url);
