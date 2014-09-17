@@ -1,8 +1,6 @@
 startserver
 ===
 
-A simple http server witch can be used like `python -m SimpleHTTPServer` and be more easy.
-
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
@@ -22,6 +20,9 @@ A simple http server witch can be used like `python -m SimpleHTTPServer` and be 
 [node-url]: http://nodejs.org/download/
 [download-image]: https://img.shields.io/npm/dm/startserver.svg?style=flat-square
 [download-url]: https://npmjs.org/package/startserver
+
+
+> A simple http server witch can be used like `python -m SimpleHTTPServer` and be more easy.
 
 ## Installment
 
