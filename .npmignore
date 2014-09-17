@@ -1,4 +1,8 @@
+.travis.yml
+.drone.yml
+examples/
 test/
-coverage.html
-lib-cov/
-node_modules
+Makefile
+.jshintrc
+.jshintignore
+coverage/

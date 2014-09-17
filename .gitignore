@@ -6,3 +6,5 @@ npm-debug.log
 .sw*
 .idea/*
 Thumbs.db
+coverage/
+.project
