@@ -1,10 +1,9 @@
 {
   "name": "startserver",
-  "version": "0.3.3",
+  "version": "0.4.2",
   "description": "startserver",
   "preferGlobal": true,
   "bin": {
-    "s": "./bin/startserver",
     "start": "./bin/startserver",
     "server": "./bin/startserver",
     "startserver": "./bin/startserver"
@@ -15,20 +14,25 @@
     "url": "git://github.com/xudafeng/startserver.git"
   },
   "dependencies": {
-    "xutil":"0.0.5",
+    "xutil":"0.1.1",
     "ipv4":"0.0.4",
     "minitpl":"0.0.2",
     "marked": "0.3.2",
     "colorx": "0.0.5",
-    "logx": "0.0.3"
+    "logx": "0.0.3",
+    "commander": "*"
   },
   "keywords": ["server","httpserver","demo","dev"],
   "devDependencies": {
     "mocha": "*",
-    "should": "*"
+    "should": "*",
+    "istanbul": "*",
+    "should": "~4.0.4",
+    "should-http": "0.0.2"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "test-travis": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- -t 20000 -r should-http test/*.test.js"
   },
   "homepage": "https://github.com/xudafeng/startserver",
   "author": "xudafeng",
