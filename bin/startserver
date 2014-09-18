@@ -24,12 +24,17 @@ var middleware = require('../lib/middleware');
 var platform = process.platform;
 var program = require('commander');
 require('colorx');
+var open = true;
 
 program
   .option('-v, --version', 'output version infomation')
+  .option('-n, --normal',  'start server with out open browser')
   .on('version', function() {
     console.log('\n  ' + require('../package').version.blue + '\n');
     process.exit(0);
+  })
+  .on('normal', function() {
+    open = false;
   })
   .usage('[port]')
   .parse(process.argv);
@@ -48,7 +53,7 @@ middleware(server);
 server.listen(port, ipv4, function(e) {
   var url = 'http://' + ipv4 + ':' + port;
   var opener = platform === 'win32' ? 'start' : platform === 'linux' ? 'xdg-open' : 'open';
-  exec(opener + ' ' + url);
+  open && exec(opener + ' ' + url);
   url = 'http://' + ipv4.yellow + ':' + port.blue;
   console.log('Running at '.red + url);
 });
