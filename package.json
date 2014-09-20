@@ -22,7 +22,7 @@
     "logx": "0.0.3",
     "commander": "*"
   },
-  "keywords": ["server","httpserver","demo","dev"],
+  "keywords": ["server","httpserver","demo","dev","slider"],
   "devDependencies": {
     "mocha": "*",
     "should": "*",
@@ -37,7 +37,7 @@
   "homepage": "https://github.com/xudafeng/startserver",
   "author": "xudafeng",
   "contributors": ["karoo"],
-  "email": "xudafeng[at]126.com",
+  "email": "xudafeng@126.com",
   "blog": "http://xdf.me",
   "license": "MIT"
 }

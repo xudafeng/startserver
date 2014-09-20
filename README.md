@@ -24,13 +24,19 @@ startserver
 ## Installment
 
 ```bash
-$ sudo npm install startserver -g
+$ npm install startserver -g
 ```
 
 ## Quick Start
 
 ```bash
-$ startserver 8888
+$ startserver
+```
+
+## Help
+
+```bash
+$ startserver -h
 ```
 
 ## License
