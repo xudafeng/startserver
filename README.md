@@ -19,18 +19,24 @@ startserver
 [download-url]: https://npmjs.org/package/startserver
 
 
-> A simple http server witch can be used like `python -m SimpleHTTPServer` and be more easy.
+> A simple http server witch can be used like `python -m SimpleHTTPServer` and be more easy to do a slider.
 
 ## Installment
 
 ```bash
-$ sudo npm install startserver -g
+$ npm install startserver -g
 ```
 
 ## Quick Start
 
 ```bash
-$ startserver 8888
+$ startserver
+```
+
+## Help
+
+```bash
+$ startserver -h
 ```
 
 ## License
