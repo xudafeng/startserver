@@ -8,32 +8,34 @@
 html,body{margin:0;padding:0;height:100%;}
 body {opacity: 0;-webkit-transition: all 1s ease;color:#fff;font-family: "Verdana", "monaco", "Microsoft YaHei";}
 #page {width: 100%;height:100%;text-align:center;position:relative;}
-#page .page{color:white;width:100%;height:100%;overflow:auto;text-align:left;position:absolute;background:gray;opacity:0;transition:
-all .5s ease;background:black;}
-#page .page .inner{margin: 0 auto;height: 100%;padding: 40px 100px;}
-#page .prev {opacity:1;transform: translate(-100%, 0);}
-#page .current {opacity:1;}
-#page .next {opacity:1;transform: translate(100%, 0);}
-.inner a {text-decoration: none;color: rgb(35, 195, 0);}
+.page{color:white;width:100%;height:100%;overflow:hidden;text-align:left;position:absolute;opacity:0;transition:all
+.5s ease;background:black;}
+.prev {opacity:1;transform: translate(-100%, 0);}
+.current {opacity:1;}
+.next {opacity:1;transform: translate(100%, 0);}
+.inner {margin: 40px 100px;}
+.inner a {text-decoration: none;color: #D1C556;}
 .inner h1 {font-size:50px;padding-bottom: 30px;}
-.inner h2 {font-size:40px; padding-bottom: 20px;}
-.inner h3 {font-size:30px; padding-bottom: 10px;}
-.inner h4 {font-size:20px; padding-bottom: 5px;}
+.inner h2 {font-size:40px;padding-bottom: 20px;}
+.inner h3 {font-size:30px;padding-bottom: 10px;}
+.inner h4 {font-size:25px;padding-bottom: 5px;}
 .inner p,
 .inner blockquote,
-.inner pre {font-size: 25px;}
+.inner pre {margin: 0;font-size: 25px;line-height: 1.4em;margin-top:20px;}
 .inner blockquote,
-.inner pre { background: rgb(47, 47, 47); border-radius: 10px; padding: 10px 20px; margin: 0;}
-.inner code { background: rgb(47, 47, 47); border-radius: 4px;padding: 2px 4px;}
+.inner pre,
+.inner code {background: #2f3129;border-radius: 4px;padding: 2px 4px;}
+.inner code {margin-right:10px;}
 .inner ul,
-.inner ol{font-size: 20px; background:rgb(47, 47, 47);border-radius: 10px;padding: 10px 50px;}
+.inner ol{font-size: 25px;line-height:1.4em;background:rgb(47, 47, 47);border-radius: 10px;padding: 10px 50px;}
 .inner li {padding: 4px;}
+.inner p img {}
 .switcher {background-color: rgba(123, 123, 123, 0.1);border: none;top:
 0;font-size: 40px;margin: 0;max-width: 150px;min-width: 80px;outline:
 none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
 158, 0.5);height:100%;}
 .switcher:hover, .switcher:focus {cursor: pointer;background-color: rgba(123, 123, 123, 0.2);}
-.right-top {position: absolute; top: 20px; right: 20px;z-index: 99;}
+.right-top {position: absolute;top: 20px;right: 20px;z-index: 99;}
 </style>
 </head>
 <body>
@@ -55,6 +57,8 @@ none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
   var left = document.getElementById("left");
   var right = document.getElementById("right");
   var page = document.getElementById("page");
+  page.contentEditable = "true";
+  page.designMode = "on";
   var pages = page.children;
   var radios = document.getElementById("radios");
 
@@ -64,7 +68,7 @@ none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
     if (expiresHours > 0) {
       var date = new Date();
       date.setTime( date.getTime + expiresHours * 3600 * 1000);
-      cookieString = cookieString + "; expires=" + date.toGMTString();
+      cookieString = cookieString + ";expires=" + date.toGMTString();
     }
     document.cookie = cookieString;
   }
@@ -76,7 +80,7 @@ none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
   }
 
   function removeClass() {
-    for (var i = 0; i < pages.length; i++) {
+    for (var i = 0;i < pages.length;i++) {
       pages[i].className = "page";
     }
   }
@@ -110,13 +114,13 @@ none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
 
   var temp = "";
 
-  for (var i = 0; i < pages.length; i++) {
+  for (var i = 0;i < pages.length;i++) {
     var current = pages[i];
     var tagName = current.tagName;
     var nextTag = pages[i + 1];
     var nextTagName = nextTag ? nextTag.tagName : null;
 
-    if (tagName === "H1" || tagName === "H2") {
+    if (i === 0 || tagName === "H1" || tagName === "H2") {
       temp += "<article class=\"page\"><div class=\"inner\">";
     }
     temp += current.outerHTML;
@@ -140,6 +144,11 @@ none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
     index = location.hash.split("=")[1] || 1;
     slider();
   });
+  global.addEventListener("mousewheel", function(e) {
+    var target = pages[index - 1];
+    var delta = e.wheelDelta / 120;
+    target.scrollTop += delta > 0 ? 10 : -10;
+  });
   left.addEventListener("click", function() {
     prev();
   });
@@ -150,15 +159,11 @@ none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
     switch (e.keyCode) {
       case 39:
       case 40:
-      case 32:
-      case 78:
-      case 13:
         e.preventDefault();
         next();
         break;
       case 37:
       case 38:
-      case 80:
         e.preventDefault();
         prev();
         break;

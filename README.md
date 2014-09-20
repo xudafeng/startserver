@@ -19,7 +19,7 @@ startserver
 [download-url]: https://npmjs.org/package/startserver
 
 
-> A simple http server witch can be used like `python -m SimpleHTTPServer` and be more easy.
+> A simple http server witch can be used like `python -m SimpleHTTPServer` and be more easy to do a slider.
 
 ## Installment
 
