@@ -5,7 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <title><#=$title#></title>
 <style>
-body {padding: 0 20%; opacity: 0; -webkit-transition: all 1s ease;}
+body {padding: 0 20%; opacity: 0;transition: all 1s ease;}
 .right-top {position: absolute; top: 20px; right: 20px;}
 </style>
 </head>

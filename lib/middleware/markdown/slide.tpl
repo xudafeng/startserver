@@ -5,10 +5,10 @@
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <title><#=$title#></title>
 <style>
-html,body{margin:0;padding:0;height:100%;}
-body {opacity: 0;-webkit-transition: all 1s ease;color:#fff;font-family: "Verdana", "monaco", "Microsoft YaHei";}
-#page {width: 100%;height:100%;text-align:center;position:relative;}
-.page{color:white;width:100%;height:100%;overflow:hidden;text-align:left;position:absolute;opacity:0;transition:all
+html,body{margin:0;padding:0;height:100%;background: #000;}
+body {opacity: 0;color:#fff;font-family: "Verdana", "monaco", "Microsoft YaHei";}
+#page {width: 100%;height:100%;position:relative;}
+.page{color:white;width:100%;height:100%;overflow:hidden;text-align:left;position:absolute;opacity:0;transition:transform
 .5s ease;background:black;}
 .prev {opacity:1;transform: translate(-100%, 0);}
 .current {opacity:1;}
@@ -24,18 +24,42 @@ body {opacity: 0;-webkit-transition: all 1s ease;color:#fff;font-family: "Verdan
 .inner pre {margin: 0;font-size: 25px;line-height: 1.4em;margin-top:20px;}
 .inner blockquote,
 .inner pre,
-.inner code {background: #2f3129;border-radius: 4px;padding: 2px 4px;}
-.inner code {margin-right:10px;}
+.inner code {background: #2f3129;border-radius: 4px;padding: 2px 4px;margin-right:10px;}
 .inner ul,
 .inner ol{font-size: 25px;line-height:1.4em;background:rgb(47, 47, 47);border-radius: 10px;padding: 10px 50px;}
 .inner li {padding: 4px;}
+.inner hr {display:none;margin-top:10px;}
 .inner p img {}
 .switcher {background-color: rgba(123, 123, 123, 0.1);border: none;top:
 0;font-size: 40px;margin: 0;max-width: 150px;min-width: 80px;outline:
 none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
 158, 0.5);height:100%;}
 .switcher:hover, .switcher:focus {cursor: pointer;background-color: rgba(123, 123, 123, 0.2);}
-.right-top {position: absolute;top: 20px;right: 20px;z-index: 99;}
+.right-top {transition:all .5s ease;position: absolute;top: 20px;right: 20px;z-index: 99;opacity: 0.4;}
+.right-top:hover {opacity: 0.8;}
+.thumbnail {background: #000;}
+.thumbnail .page {position: static;display: inline-block;overflow:
+hidden;cursor: pointer;width: 20%;height: 20%;background: rgba(128, 128, 128,
+0.35);margin-left: 30px;margin-top: 20px; transform: none; border-radius:
+10px;opacity:1;}
+.thumbnail .page .inner {padding: 4px 10px; margin: 0;text-align: center;}
+.thumbnail .page .inner h1,
+.thumbnail .page .inner h2 {font-size: 18px; text-align: center;}
+.thumbnail .page .inner ul,
+.thumbnail .page .inner li,
+.thumbnail .page .inner ol,
+.thumbnail .page .inner pre,
+.thumbnail .page .inner img,
+.thumbnail .page .inner p,
+.thumbnail .page .inner code,
+.thumbnail .page .inner h3,
+.thumbnail .page .inner h4,
+.thumbnail .page .inner blockquote{display: none;}
+#copyright { position: absolute; bottom: 20px; left: 50%; margin-left: -192px;
+display: none;width: 384px;}
+#copyright a {text-decoration: none;color: #D1C556;}
+.thumbnail #copyright {display: block;}
+.thumbnail .switcher {display: none!important;}
 </style>
 </head>
 <body>
@@ -50,6 +74,10 @@ none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
 </div>
 <button id="left" class="switcher" style="left: 0px;">&lsaquo;</button>
 <button id="right"   class="switcher" style="right: 0px;">&rsaquo;</button>
+<div id="copyright">Thank you for enjoy. &copy; <a href="https://github.com/xudafeng/startserver"
+target="_blank">Startserver</a> <iframe
+src="http://ghbtns.com/github-btn.html?user=xudafeng&repo=startserver&type=watch&count=true"
+allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe></div>
 <script>
 (function(global, undefined) {
   var isSlide = document.getElementById("slide").checked;
@@ -57,6 +85,7 @@ none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
   var left = document.getElementById("left");
   var right = document.getElementById("right");
   var page = document.getElementById("page");
+  var isthumbnail = false;
   page.contentEditable = "true";
   page.designMode = "on";
   var pages = page.children;
@@ -80,7 +109,7 @@ none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
   }
 
   function removeClass() {
-    for (var i = 0;i < pages.length;i++) {
+    for (var i = 0; i < pages.length; i++) {
       pages[i].className = "page";
     }
   }
@@ -105,11 +134,18 @@ none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
     direct("#page=" + index);
   }
 
+  function thumbnail() {
+    page.contentEditable = isthumbnail ? "true" : "false";
+    document.body.className = isthumbnail ? "" : "thumbnail";
+    isthumbnail = !isthumbnail;
+  }
+
   function slider() {
+    if (index == 0) return thumbnail();
     removeClass();
     addClass(index, "next");
-    addClass(index - 1, "current");
     addClass(index - 2, "prev");
+    addClass(index - 1, "current");
   }
 
   var temp = "";
@@ -133,12 +169,31 @@ none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
   page.innerHTML = temp + "<\/div><\/article>";
   pages = page.querySelectorAll(".page");
 
+  function delegate(target) {
+    return target.nodeName.toLowerCase() === "article" ? target : delegate(target.parentElement);
+  }
+
+  function getIndex(e) {
+    var p = e.parentNode;
+    var c = p.children;
+    for (var i=0; i < c.length; i++) {
+      if (c[i] == e) return i;
+    }
+  }
+
   radios.addEventListener("click", function(e) {
 
     if (e.target.nodeName === "INPUT" && e.target.value === "true") {
       setCookie("startserver-slide", false, 240);
       direct();
     }
+  });
+  page.addEventListener("click", function(e) {
+    if (!isthumbnail) return;
+    var target = delegate(e.target);
+    var index = getIndex(target) + 1;
+    thumbnail();
+    direct("#page=" + index);
   });
   global.addEventListener("hashchange", function() {
     index = location.hash.split("=")[1] || 1;
@@ -166,6 +221,10 @@ none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
       case 38:
         e.preventDefault();
         prev();
+        break;
+      case 27:
+        e.preventDefault();
+        direct("#page=" + 0);
         break;
     }
   });
