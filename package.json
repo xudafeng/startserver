@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "startserver",
   "preferGlobal": true,
   "bin": {
