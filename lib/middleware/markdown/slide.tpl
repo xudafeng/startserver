@@ -54,6 +54,11 @@ hidden;cursor: pointer;width: 20%;height: 20%;background: rgba(128, 128, 128,
 .thumbnail .page .inner code,
 .thumbnail .page .inner h3,
 .thumbnail .page .inner h4,
+.thumbnail .page .inner table,
+.thumbnail .page .inner i,
+.thumbnail .page .inner strong,
+.thumbnail .page .inner b,
+.thumbnail .page .inner hr,
 .thumbnail .page .inner blockquote{display: none;}
 #copyright { position: absolute; bottom: 20px; left: 50%; margin-left: -192px;
 display: none;width: 384px;}
