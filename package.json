@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "A simple http server witch can be used like `python -m SimpleHTTPServer` and be more easy to generate a slider.",
   "preferGlobal": true,
   "bin": {
@@ -21,7 +21,8 @@
     "marked": "0.3.2",
     "colorx": "0.0.5",
     "logx": "0.0.3",
-    "commander": "*"
+    "commander": "*",
+    "request": "~2.40.0"
   },
   "keywords": ["server","httpserver","demo","dev","slider"],
   "devDependencies": {

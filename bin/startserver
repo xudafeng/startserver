@@ -23,14 +23,17 @@ var exec = require('child_process').exec;
 var middleware = require('../lib/middleware');
 var platform = process.platform;
 var program = require('commander');
+var request = require('request');
+var logx = require('logx');
 require('colorx');
+var pkg = require('../package.json');
 var open = true;
 
 program
   .option('-v, --version', 'output version infomation')
   .option('-n, --normal',  'start server with out open browser')
   .on('version', function() {
-    console.log('\n  ' + require('../package').version.blue + '\n');
+    console.log('\n  ' + pkg.version.blue + '\n');
     process.exit(0);
   })
   .on('normal', function() {
@@ -39,21 +42,38 @@ program
   .usage('[port]')
   .parse(process.argv);
 
-var port = parseInt(program.args[0] || 8080);
+var handle = function() {
+  var port = parseInt(program.args[0] || 8080);
 
-if (isNaN(port)) {
-  console.log('\n  Arguments Error.'.red + '\n');
-  return program.help();
+  if (isNaN(port)) {
+    console.log('\n  Arguments Error.'.red + '\n');
+    return program.help();
+  }
+
+  var server = new StartServer();
+
+  middleware(server);
+
+  server.listen(port, ipv4, function(e) {
+    var url = 'http://' + ipv4 + ':' + port;
+    var opener = platform === 'win32' ? 'start' : platform === 'linux' ? 'xdg-open' : 'open';
+    open && exec(opener + ' ' + url);
+    url = 'http://' + ipv4.yellow + ':' + port.blue;
+    console.log('Running at '.red + url);
+  });
 }
 
-var server = new StartServer();
+var opts = {
+  url: 'https://registry.npmjs.org/startserver/latest',
+  timeout: 1000
+};
 
-middleware(server);
+request(opts, function(err, res, body) {
+  if (err) return handle();
+  var data = JSON.parse(body);
 
-server.listen(port, ipv4, function(e) {
-  var url = 'http://' + ipv4 + ':' + port;
-  var opener = platform === 'win32' ? 'start' : platform === 'linux' ? 'xdg-open' : 'open';
-  open && exec(opener + ' ' + url);
-  url = 'http://' + ipv4.yellow + ':' + port.blue;
-  console.log('Running at '.red + url);
+  if (data.version && pkg.version !== data.version) {
+    logx.warn('您的版本[' + pkg.version.red + ']落伍啦，请执行 '.yellow + 'npm install -g startserver@'.gray + data.version.gray + ' 更新。'.yellow);
+  }
+  handle();
 });
