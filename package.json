@@ -1,7 +1,7 @@
 {
   "name": "startserver",
-  "version": "0.5.1",
-  "description": "startserver",
+  "version": "0.5.2",
+  "description": "A simple http server witch can be used like `python -m SimpleHTTPServer` and be more easy to generate a slider.",
   "preferGlobal": true,
   "bin": {
     "start": "./bin/startserver",
