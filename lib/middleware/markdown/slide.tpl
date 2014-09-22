@@ -26,18 +26,24 @@ body {opacity: 0;color:#fff;font-family: "Verdana", "monaco", "Microsoft YaHei";
 .inner pre,
 .inner code {background: #2f3129;border-radius: 4px;padding: 2px
 4px;margin-right:10px;margin-top:30px;}
-.inner pre 
+.inner pre
 .inner ul,
 .inner ol{font-size: 25px;line-height:1.4em;background:rgb(47, 47, 47);border-radius: 10px;padding: 10px 50px;}
 .inner li {padding: 4px;}
 .inner hr {display:none;margin-top:10px;}
 .inner p img {}
+.inner table { table-layout:fixed; empty-cells:show; border-collapse:
+collapse;margin:0 auto; border:2px solid #666; }
+.inner table th,
+.inner table td{text-align: left; border:1px solid #666; padding: 0.8em 1em;}
+.inner table th { background: rgba(244, 253, 255, 0.24);font-weight: bold;padding: 1em;}
 .switcher {background-color: rgba(123, 123, 123, 0.1);border: none;top:
 0;font-size: 40px;margin: 0;max-width: 150px;min-width: 80px;outline:
-none;padding: 0;position: absolute;top: 0;z-index: 99;color: rgba(158, 158,
+none;padding: 0;position: absolute;top: 0;z-index: 9999;color: rgba(158, 158,
 158, 0.5);height:100%;}
 .switcher:hover, .switcher:focus {cursor: pointer;background-color: rgba(123, 123, 123, 0.2);}
-.right-top {transition:all .5s ease;position: absolute;top: 20px;right: 20px;z-index: 99;opacity: 0.4;}
+.right-top {transition:all .5s ease;position: absolute;top: 20px;right:
+20px;z-index: 99999;opacity: 0.4;}
 .right-top:hover {opacity: 0.8;}
 .thumbnail {background: #000;}
 .thumbnail .page {position: static;display: inline-block;overflow:
