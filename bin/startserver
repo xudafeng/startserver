@@ -31,7 +31,7 @@ var open = true;
 
 program
   .option('-v, --version', 'output version infomation')
-  .option('-n, --normal',  'start server with out open browser')
+  .option('-n, --normal',  'start server without opening browser')
   .on('version', function() {
     console.log('\n  ' + pkg.version.blue + '\n');
     process.exit(0);
