@@ -14,7 +14,7 @@ body {opacity: 0;color:#fff;font-family: "Verdana", "monaco", "Microsoft YaHei";
 .current {opacity:1;z-index:999;}
 .next {opacity:0.2;transform: translate(100%, 0);}
 .inner {margin: 40px 100px;}
-.inner a {text-decoration: none;color: #D1C556;}
+.inner a {text-decoration: none;color: #D1C556;cursor:pointer;}
 .inner h1 {font-size:50px;padding-bottom: 30px;}
 .inner h2 {font-size:40px;padding-bottom: 20px;}
 .inner h3 {font-size:30px;padding-bottom: 10px;}
@@ -101,7 +101,6 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   var right = document.getElementById("right");
   var page = document.getElementById("page");
   var isthumbnail = false;
-  page.contentEditable = "true";
   page.designMode = "on";
   var pages = page.children;
   var radios = document.getElementById("radios");
@@ -150,9 +149,13 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   }
 
   function thumbnail() {
-    page.contentEditable = isthumbnail ? "true" : "false";
+    editAble(isthumbnail ? "false" : "true");
     document.body.className = isthumbnail ? "" : "thumbnail";
     isthumbnail = !isthumbnail;
+  }
+
+  function editAble(r) {
+    page.contentEditable = r;
   }
 
   function slider() {
@@ -226,6 +229,10 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   });
   right.addEventListener("click", function() {
     next();
+  });
+  page.addEventListener("dblclick", function() {
+    if (isthumbnail) return;
+    editAble(page.contentEditable === "true" ? "false" : "true");
   });
   document.addEventListener("keydown", function(e) {
     switch (e.keyCode) {

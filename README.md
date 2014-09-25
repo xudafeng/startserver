@@ -24,7 +24,7 @@ startserver
 ## Installment
 
 ```bash
-$ npm install startserver -g
+$ npm i startserver -g
 ```
 
 ## Quick Start
