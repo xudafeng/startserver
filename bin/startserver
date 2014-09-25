@@ -26,7 +26,7 @@ var markdown = require('../lib/middleware/markdown').markdown;
 var platform = process.platform;
 var program = require('commander');
 var request = require('request');
-var logx = require('logx');
+var logger = require('logx');
 require('colorx');
 var pkg = require('../package.json');
 var open = true;
@@ -34,37 +34,38 @@ var root = process.cwd();
 
 
 program
-  .option('-v, --version', 'output version infomation')
+  .option('-v, --versions', 'output version infomation')
   .option('-n, --normal',  'start server without opening browser')
-  .on('version', function() {
-    console.log('\n  ' + pkg.version.blue + '\n');
-    process.exit(0);
-  })
   .option('-s, --static', 'generate static file for markdown')
-  .on('static', function() {
-    var args = this.rawArgs;
-    if (args.length !== 4) {
-      console.log('\n  Arguments Error.'.red + '\n');
-      program.help();
-      process.exit(0);
-    }
-    var dir = path.dirname(root).split(path.sep);
-    var dist = path.resolve(args[3]);
-    var content = markdown('slide', dir[dir.length - 1], path.resolve(args[3]));
-    util.file.writeFile(dist + '.html' ,content);
-    process.exit(0);
-  })
-  .on('normal', function() {
-    open = false;
-  })
   .usage('[port]')
   .parse(process.argv);
+
+if (program.versions) {
+  logger.info('your version is ' + pkg.version.gray);
+  process.exit(0);
+}
+
+if (program.static) {
+
+  var args = program.args;
+  if (args.length !== 1) {
+    logger.warn('  Arguments Error.'.red + '\n');
+    program.help();
+    process.exit(0);
+  }
+  var dir = path.dirname(root).split(path.sep);
+  var dist = path.resolve(args[0]);
+  var content = markdown('slide', dir[dir.length - 1], path.resolve(args[0]));
+  util.file.writeFile(dist + '.html' ,content);
+  logger.info('file' + dist + '.html created.');
+  process.exit(0);
+}
 
 var handle = function() {
   var port = parseInt(program.args[0] || 8080);
 
   if (isNaN(port)) {
-    console.log('\n  Arguments Error.'.red + '\n');
+    logger.warn('  Arguments Error.'.red + '\n');
     return program.help();
   }
 
@@ -75,9 +76,9 @@ var handle = function() {
   server.listen(port, ipv4, function(e) {
     var url = 'http://' + ipv4 + ':' + port;
     var opener = platform === 'win32' ? 'start' : platform === 'linux' ? 'xdg-open' : 'open';
-    open && exec(opener + ' ' + url);
+    !program.normal && exec(opener + ' ' + url);
     url = 'http://' + ipv4.yellow + ':' + port.blue;
-    console.log('Running at '.red + url);
+    logger.info('Running at '.red + url);
   });
 }
 
@@ -86,12 +87,13 @@ var opts = {
   timeout: 1000
 };
 
+
 request(opts, function(err, res, body) {
   if (err) return handle();
   var data = JSON.parse(body);
 
   if (data.version && pkg.version !== data.version) {
-    logx.warn('您的版本[' + pkg.version.red + ']落伍啦，请执行 '.yellow + 'npm install -g startserver@'.gray + data.version.gray + ' 更新。'.yellow);
+    logger.warn('Your version [' + pkg.version.red + '] id outdate, please exec '.yellow + 'npm install -g startserver@'.gray + data.version.gray + ' to update。'.yellow);
   }
   handle();
 });

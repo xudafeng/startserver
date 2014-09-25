@@ -7,7 +7,7 @@ describe('lib/middleware/directory', function () {
 
   it('directory should be working ok', function (done) {
 
-    var proxy = http.createServer(function( request, response ){
+    var proxy = http.createServer(function(request, response) {
       directoryModel(request, response, function(){
         (response._header.indexOf(200) != '-1').should.equal(true);
         (response._header.indexOf('text/html') != '-1').should.equal(true);
