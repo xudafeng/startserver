@@ -16,44 +16,84 @@
 
 process.title = 'startserver';
 
+var path = require('path');
 var util = require('xutil');
 var ipv4 = require('ipv4') || 'localhost';
 var StartServer = require('../');
 var exec = require('child_process').exec;
 var middleware = require('../lib/middleware');
+var markdown = require('../lib/middleware/markdown').markdown;
 var platform = process.platform;
 var program = require('commander');
+var request = require('request');
+var logger = require('logx');
 require('colorx');
+var pkg = require('../package.json');
 var open = true;
+var root = process.cwd();
+
 
 program
-  .option('-v, --version', 'output version infomation')
-  .option('-n, --normal',  'start server with out open browser')
-  .on('version', function() {
-    console.log('\n  ' + require('../package').version.blue + '\n');
-    process.exit(0);
-  })
-  .on('normal', function() {
-    open = false;
-  })
+  .option('-v, --versions', 'output version infomation')
+  .option('-n, --normal',  'start server without opening browser')
+  .option('-s, --static', 'generate static file for markdown')
   .usage('[port]')
   .parse(process.argv);
 
-var port = parseInt(program.args[0] || 8080);
-
-if (isNaN(port)) {
-  console.log('\n  Arguments Error.'.red + '\n');
-  return program.help();
+if (program.versions) {
+  logger.info('your version is ' + pkg.version.gray);
+  process.exit(0);
 }
 
-var server = new StartServer();
+if (program.static) {
 
-middleware(server);
+  var args = program.args;
+  if (args.length !== 1) {
+    logger.warn('  Arguments Error.'.red + '\n');
+    program.help();
+    process.exit(0);
+  }
+  var dir = path.dirname(root).split(path.sep);
+  var dist = path.resolve(args[0]);
+  var content = markdown('slide', dir[dir.length - 1], path.resolve(args[0]));
+  util.file.writeFile(dist + '.html' ,content);
+  logger.info('file' + dist + '.html created.');
+  process.exit(0);
+}
 
-server.listen(port, ipv4, function(e) {
-  var url = 'http://' + ipv4 + ':' + port;
-  var opener = platform === 'win32' ? 'start' : platform === 'linux' ? 'xdg-open' : 'open';
-  open && exec(opener + ' ' + url);
-  url = 'http://' + ipv4.yellow + ':' + port.blue;
-  console.log('Running at '.red + url);
+var handle = function() {
+  var port = parseInt(program.args[0] || 8080);
+
+  if (isNaN(port)) {
+    logger.warn('  Arguments Error.'.red + '\n');
+    return program.help();
+  }
+
+  var server = new StartServer();
+
+  middleware(server);
+
+  server.listen(port, ipv4, function(e) {
+    var url = 'http://' + ipv4 + ':' + port;
+    var opener = platform === 'win32' ? 'start' : platform === 'linux' ? 'xdg-open' : 'open';
+    !program.normal && exec(opener + ' ' + url);
+    url = 'http://' + ipv4.yellow + ':' + port.blue;
+    logger.info('Running at '.red + url);
+  });
+}
+
+var opts = {
+  url: 'https://registry.npmjs.org/startserver/latest',
+  timeout: 1000
+};
+
+
+request(opts, function(err, res, body) {
+  if (err) return handle();
+  var data = JSON.parse(body);
+
+  if (data.version && pkg.version !== data.version) {
+    logger.warn('Your version [' + pkg.version.red + '] id outdate, please exec '.yellow + 'npm install -g startserver@'.gray + data.version.gray + ' to update。'.yellow);
+  }
+  handle();
 });
