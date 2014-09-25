@@ -222,7 +222,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   global.addEventListener("mousewheel", function(e) {
     var target = pages[index - 1];
     var delta = e.wheelDelta / 120;
-    target.scrollTop += delta > 0 ? 10 : -10;
+    target.scrollTop += delta > 0 ? -10 : 10;
   });
   left.addEventListener("click", function() {
     prev();

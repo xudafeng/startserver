@@ -16,11 +16,13 @@
 
 process.title = 'startserver';
 
+var path = require('path');
 var util = require('xutil');
 var ipv4 = require('ipv4') || 'localhost';
 var StartServer = require('../');
 var exec = require('child_process').exec;
 var middleware = require('../lib/middleware');
+var markdown = require('../lib/middleware/markdown').markdown;
 var platform = process.platform;
 var program = require('commander');
 var request = require('request');
@@ -28,12 +30,28 @@ var logx = require('logx');
 require('colorx');
 var pkg = require('../package.json');
 var open = true;
+var root = process.cwd();
+
 
 program
   .option('-v, --version', 'output version infomation')
   .option('-n, --normal',  'start server without opening browser')
   .on('version', function() {
     console.log('\n  ' + pkg.version.blue + '\n');
+    process.exit(0);
+  })
+  .option('-s, --static', 'generate static file for markdown')
+  .on('static', function() {
+    var args = this.rawArgs;
+    if (args.length !== 4) {
+      console.log('\n  Arguments Error.'.red + '\n');
+      program.help();
+      process.exit(0);
+    }
+    var dir = path.dirname(root).split(path.sep);
+    var dist = path.resolve(args[3]);
+    var content = markdown('slide', dir[dir.length - 1], path.resolve(args[3]));
+    util.file.writeFile(dist + '.html' ,content);
     process.exit(0);
   })
   .on('normal', function() {

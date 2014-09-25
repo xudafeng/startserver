@@ -31,6 +31,9 @@ $ npm i startserver -g
 
 ```bash
 $ startserver
+$ start
+$ server
+$ ss
 ```
 
 ## Help
