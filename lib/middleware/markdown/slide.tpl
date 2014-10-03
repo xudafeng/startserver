@@ -5,10 +5,14 @@
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <title><#=$title#></title>
 <style>
-html,body{margin:0;padding:0;height:100%;background: #000;}
-.invert {-webkit-filter: invert(1);}
-.invert img {-webkit-filter: invert(1);}
-body {-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;opacity:
+html{margin:0;padding:0;height:100%;}
+.invert {background: #fff;}
+.invert #page .page {background: #fff;color: #000;}
+.invert .right-top {color: #000;}
+.invert .inner blockquote p,
+.invert .inner pre,
+.invert .inner code {color: #fff;background:#000;margin-left: 6px;}
+body {margin:0;padding:0;height:100%;background: #000;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;opacity:
 1;color:#fff;font-family: Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";}
 #page {width: 100%;height:100%;position:relative;overflow:hidden;}
 .page{color:white;width:100%;height:100%;overflow:hidden;text-align:left;position:absolute;opacity:0;transition:transform
@@ -17,22 +21,22 @@ body {-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;opacity:
 .current {opacity:1;z-index:999;}
 .next {opacity:0.2;transform: translate(100%, 0);}
 .inner {margin: 40px 100px;}
-.inner a {text-decoration: none;color: #e7ad52;cursor:pointer;}
-.inner h1 {font-size:50px;padding-bottom: 30px;}
+.inner a {text-decoration: none;color: #e7ad52;cursor:pointer;font-weight: bold;}
+.inner h1 {font-size:55px;padding-bottom: 8px;}
 .inner h2 {font-size:40px;padding-bottom: 20px;}
 .inner h3 {font-size:30px;padding-bottom: 10px;}
 .inner h4 {font-size:25px;padding-bottom: 5px;}
 .inner p,
 .inner blockquote,
-.inner pre {margin: 0;font-size: 25px;line-height: 1.4em;margin-top:30px;}
+.inner pre {margin: 0;font-size: 26px;line-height: 1.4em;margin-top:30px;}
 .inner blockquote,
 .inner pre,
 .inner code {background: #2f3129;border-radius: 4px;padding: 2px
-4px;margin-right:10px;margin-top:30px;}
-.inner blockquote p {margin-top:0;}
+4px;margin-right:10px;margin-top:30px;font-weight:bold;}
+.inner blockquote p {margin-top:0;word-spacing: 4px;padding: 4px;}
 .inner pre
 .inner ul,
-.inner ol{font-size: 25px;line-height:1.4em;background:rgb(47, 47, 47);border-radius: 10px;padding: 10px 50px;}
+.inner ol{font-size: 26px;line-height:1.4em;background:rgb(47, 47, 47);border-radius: 10px;padding: 10px 50px;}
 .inner li {padding: 10px 4px;font-size: 22px;}
 .inner hr {display:none;margin-top:10px;}
 .inner table { table-layout:fixed; empty-cells:show; border-collapse:
@@ -55,7 +59,7 @@ hidden;cursor: pointer;width: 20%;height: 20%;background: rgba(128, 128, 128,
 10px;opacity:1;}
 .thumbnail .page .inner {padding: 4px 10px; margin: 0;text-align: center;}
 .thumbnail .page .inner h1,
-.thumbnail .page .inner h2 {font-size: 18px; text-align: center;}
+.thumbnail .page .inner h2 {font-size: 22px; text-align: center;}
 .thumbnail .page .inner ul,
 .thumbnail .page .inner li,
 .thumbnail .page .inner ol,
@@ -106,7 +110,8 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   var right = document.getElementById("right");
   var page = document.getElementById("page");
   var invert = document.getElementById("invert");
-  var isthumbnail = false;
+  var isThumbnail = false;
+  var isInvert = false;
   page.designMode = "on";
   var pages = page.children;
   var radios = document.getElementById("radios");
@@ -155,9 +160,12 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   }
 
   function thumbnail() {
-    editAble(isthumbnail ? "false" : "true");
-    document.body.className = isthumbnail ? "" : "thumbnail";
-    isthumbnail = !isthumbnail;
+    isThumbnail = !isThumbnail;
+    editAble(isThumbnail ? "false" : "true");
+    var cls = "";
+    if (isInvert) cls += " invert";
+    if (isThumbnail) cls += " thumbnail";
+    document.body.className = cls;
   }
 
   function editAble(r) {
@@ -215,7 +223,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
     }
   });
   page.addEventListener("click", function(e) {
-    if (!isthumbnail) return;
+    if (!isThumbnail) return;
     var target = delegate(e.target);
     var index = getIndex(target) + 1;
     thumbnail();
@@ -237,12 +245,16 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
     next();
   });
   page.addEventListener("dblclick", function() {
-    if (isthumbnail) return;
+    if (isThumbnail) return;
     editAble(page.contentEditable === "true" ? "false" : "true");
   });
   invert.addEventListener("change", function(e) {
     var target = e.target;
-    document.body.className = target.checked ? "invert" : "";
+    isInvert = target.checked;
+    var cls = "";
+    if (isInvert) cls += " invert";
+    if (isThumbnail) cls += " thumbnail";
+    document.body.className = cls;
   });
   document.addEventListener("keydown", function(e) {
     switch (e.keyCode) {
