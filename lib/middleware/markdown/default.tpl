@@ -7,10 +7,14 @@
 <style>
 body {padding: 0 20%; opacity: 0;transition: all 1s ease;}
 .right-top {position: absolute; top: 20px; right: 20px;}
+.invert {-webkit-filter: invert(1);}
+.invert img {-webkit-filter: invert(1);}
 </style>
 </head>
 <body>
+<div id="page">
 <#=$content#>
+</div>
 <div class="right-top" id="radios">
   <label>normal</label>
   <input type="radio" name="slide" checked value="true" />

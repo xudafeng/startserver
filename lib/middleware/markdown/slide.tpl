@@ -6,7 +6,10 @@
 <title><#=$title#></title>
 <style>
 html,body{margin:0;padding:0;height:100%;background: #000;}
-body {opacity: 0;color:#fff;font-family: "Verdana", "monaco", "Microsoft YaHei";}
+.invert {-webkit-filter: invert(1);}
+.invert img {-webkit-filter: invert(1);}
+body {-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;opacity:
+1;color:#fff;font-family: Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";}
 #page {width: 100%;height:100%;position:relative;overflow:hidden;}
 .page{color:white;width:100%;height:100%;overflow:hidden;text-align:left;position:absolute;opacity:0;transition:transform
 .8s ease;background:black;}
@@ -14,7 +17,7 @@ body {opacity: 0;color:#fff;font-family: "Verdana", "monaco", "Microsoft YaHei";
 .current {opacity:1;z-index:999;}
 .next {opacity:0.2;transform: translate(100%, 0);}
 .inner {margin: 40px 100px;}
-.inner a {text-decoration: none;color: #D1C556;cursor:pointer;}
+.inner a {text-decoration: none;color: #e7ad52;cursor:pointer;}
 .inner h1 {font-size:50px;padding-bottom: 30px;}
 .inner h2 {font-size:40px;padding-bottom: 20px;}
 .inner h3 {font-size:30px;padding-bottom: 10px;}
@@ -26,12 +29,12 @@ body {opacity: 0;color:#fff;font-family: "Verdana", "monaco", "Microsoft YaHei";
 .inner pre,
 .inner code {background: #2f3129;border-radius: 4px;padding: 2px
 4px;margin-right:10px;margin-top:30px;}
+.inner blockquote p {margin-top:0;}
 .inner pre
 .inner ul,
 .inner ol{font-size: 25px;line-height:1.4em;background:rgb(47, 47, 47);border-radius: 10px;padding: 10px 50px;}
-.inner li {padding: 4px;}
+.inner li {padding: 10px 4px;font-size: 22px;}
 .inner hr {display:none;margin-top:10px;}
-.inner p img {}
 .inner table { table-layout:fixed; empty-cells:show; border-collapse:
 collapse;margin:0 auto; border:2px solid #666; }
 .inner table th,
@@ -82,6 +85,8 @@ display: none;width: 384px;}
 <#=$content#>
 </div>
 <div class="right-top" id="radios">
+  <label>invert</label>
+  <input type="checkbox" id="invert"/>
   <label>normal</label>
   <input type="radio" name="slide" value="true" />
   <label>slide</label>
@@ -100,6 +105,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   var left = document.getElementById("left");
   var right = document.getElementById("right");
   var page = document.getElementById("page");
+  var invert = document.getElementById("invert");
   var isthumbnail = false;
   page.designMode = "on";
   var pages = page.children;
@@ -233,6 +239,10 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   page.addEventListener("dblclick", function() {
     if (isthumbnail) return;
     editAble(page.contentEditable === "true" ? "false" : "true");
+  });
+  invert.addEventListener("change", function(e) {
+    var target = e.target;
+    document.body.className = target.checked ? "invert" : "";
   });
   document.addEventListener("keydown", function(e) {
     switch (e.keyCode) {
