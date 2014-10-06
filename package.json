@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.5.16",
+  "version": "0.5.22",
   "description": "A simple http server witch can be used like `python -m SimpleHTTPServer` and be more easy to generate a slider.",
   "preferGlobal": true,
   "bin": {
@@ -17,7 +17,7 @@
   "dependencies": {
     "xutil":"0.1.1",
     "ipv4":"0.0.4",
-    "minitpl":"0.0.3",
+    "microtemplate": "0.1.2",
     "marked": "0.3.2",
     "colorx": "0.0.5",
     "logx": "0.0.4",
@@ -27,7 +27,6 @@
   "keywords": ["server","httpserver","demo","dev","slider"],
   "devDependencies": {
     "mocha": "*",
-    "should": "*",
     "istanbul": "*",
     "should": "~4.0.4",
     "should-http": "0.0.2"

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-<title><#=$title#></title>
+<title><#=title#></title>
 <style>
 html{margin:0;padding:0;height:100%;}
 .invert {background: #fff;}
@@ -86,7 +86,7 @@ display: none;width: 384px;}
 </head>
 <body>
 <div id="page">
-<#=$content#>
+<#=content#>
 </div>
 <div class="right-top" id="radios">
   <label>invert</label>
@@ -104,25 +104,25 @@ src="http://ghbtns.com/github-btn.html?user=xudafeng&repo=startserver&type=watch
 allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe></div>
 <script>
 (function(global, undefined) {
-  var isSlide = document.getElementById("slide").checked;
-  var index = location.hash.split("=")[1] || 1;
-  var left = document.getElementById("left");
-  var right = document.getElementById("right");
-  var page = document.getElementById("page");
-  var invert = document.getElementById("invert");
+  var isSlide = document.getElementById('slide').checked;
+  var index = location.hash.split('=')[1] || 1;
+  var left = document.getElementById('left');
+  var right = document.getElementById('right');
+  var page = document.getElementById('page');
+  var invert = document.getElementById('invert');
   var isThumbnail = false;
   var isInvert = false;
-  page.designMode = "on";
+  page.designMode = 'on';
   var pages = page.children;
-  var radios = document.getElementById("radios");
+  var radios = document.getElementById('radios');
 
   function setCookie(name, value, expiresHours) {
-    var cookieString = name + "=" + escape(value);
+    var cookieString = name + '=' + escape(value);
 
     if (expiresHours > 0) {
       var date = new Date();
       date.setTime( date.getTime + expiresHours * 3600 * 1000);
-      cookieString = cookieString + ";expires=" + date.toGMTString();
+      cookieString = cookieString + ';expires=' + date.toGMTString();
     }
     document.cookie = cookieString;
   }
@@ -130,41 +130,41 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   function addClass(index, name) {
 
     if (!pages[index]) return;
-    pages[index].className += " " + name;
+    pages[index].className += ' ' + name;
   }
 
   function removeClass() {
     for (var i = 0; i < pages.length; i++) {
-      pages[i].className = "page";
+      pages[i].className = 'page';
     }
   }
 
   function direct(target) {
-    left.style.display = "block";
-    right.style.display = "block";
-    if (index == 1) left.style.display = "none";
-    if (index == pages.length) right.style.display = "none";
-    location.href = target || "";
+    left.style.display = 'block';
+    right.style.display = 'block';
+    if (index == 1) left.style.display = 'none';
+    if (index == pages.length) right.style.display = 'none';
+    location.href = target || '';
   }
 
   function prev() {
     if (index == 1) return;
     index --;
-    direct("#page=" + index);
+    direct('#page=' + index);
   }
 
   function next() {
     if (index == pages.length) return;
     index ++;
-    direct("#page=" + index);
+    direct('#page=' + index);
   }
 
   function thumbnail() {
     isThumbnail = !isThumbnail;
-    editAble(isThumbnail ? "false" : "true");
-    var cls = "";
-    if (isInvert) cls += " invert";
-    if (isThumbnail) cls += " thumbnail";
+    editAble(isThumbnail ? 'false' : 'true');
+    var cls = '';
+    if (isInvert) cls += ' invert';
+    if (isThumbnail) cls += ' thumbnail';
     document.body.className = cls;
   }
 
@@ -175,14 +175,14 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   function slider() {
     if (index == 0) return thumbnail();
     removeClass();
-    addClass(index - 1, "current");
+    addClass(index - 1, 'current');
     setTimeout(function() {
-      addClass(index, "next");
-      addClass(index - 2, "prev");
+      addClass(index, 'next');
+      addClass(index - 2, 'prev');
     }, 16);
   }
 
-  var temp = "";
+  var temp = '';
 
   for (var i = 0;i < pages.length;i++) {
     var current = pages[i];
@@ -190,21 +190,21 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
     var nextTag = pages[i + 1];
     var nextTagName = nextTag ? nextTag.tagName : null;
 
-    if (i === 0 || tagName === "H1" || tagName === "H2") {
-      temp += "<article class=\"page\"><div class=\"inner\">";
+    if (i === 0 || tagName === 'H1' || tagName === 'H2') {
+      temp += '<article class=\'page\'><div class=\'inner\'>';
     }
     temp += current.outerHTML;
 
-    if (nextTagName === "H1" || nextTagName === "H2") {
-      temp += "<\/div><\/article>";
+    if (nextTagName === 'H1' || nextTagName === 'H2') {
+      temp += '<\/div><\/article>';
     }
   }
 
-  page.innerHTML = temp + "<\/div><\/article>";
-  pages = page.querySelectorAll(".page");
+  page.innerHTML = temp + '<\/div><\/article>';
+  pages = page.querySelectorAll('.page');
 
   function delegate(target) {
-    return target.nodeName.toLowerCase() === "article" ? target : delegate(target.parentElement);
+    return target.nodeName.toLowerCase() === 'article' ? target : delegate(target.parentElement);
   }
 
   function getIndex(e) {
@@ -215,48 +215,48 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
     }
   }
 
-  radios.addEventListener("click", function(e) {
+  radios.addEventListener('click', function(e) {
 
-    if (e.target.nodeName === "INPUT" && e.target.value === "true") {
-      setCookie("startserver-slide", false, 240);
+    if (e.target.nodeName === 'INPUT' && e.target.value === 'true') {
+      setCookie('startserver-slide', false, 240);
       direct();
     }
   });
-  page.addEventListener("click", function(e) {
+  page.addEventListener('click', function(e) {
     if (!isThumbnail) return;
     var target = delegate(e.target);
     var index = getIndex(target) + 1;
     thumbnail();
-    direct("#page=" + index);
+    direct('#page=' + index);
   });
-  global.addEventListener("hashchange", function() {
-    index = location.hash.split("=")[1] || 1;
+  global.addEventListener('hashchange', function() {
+    index = location.hash.split('=')[1] || 1;
     slider();
   });
-  global.addEventListener("mousewheel", function(e) {
+  global.addEventListener('mousewheel', function(e) {
     var target = pages[index - 1];
     var delta = e.wheelDelta / 120;
     target.scrollTop += delta > 0 ? -10 : 10;
   });
-  left.addEventListener("click", function() {
+  left.addEventListener('click', function() {
     prev();
   });
-  right.addEventListener("click", function() {
+  right.addEventListener('click', function() {
     next();
   });
-  page.addEventListener("dblclick", function() {
+  page.addEventListener('dblclick', function() {
     if (isThumbnail) return;
-    editAble(page.contentEditable === "true" ? "false" : "true");
+    editAble(page.contentEditable === 'true' ? 'false' : 'true');
   });
-  invert.addEventListener("change", function(e) {
+  invert.addEventListener('change', function(e) {
     var target = e.target;
     isInvert = target.checked;
-    var cls = "";
-    if (isInvert) cls += " invert";
-    if (isThumbnail) cls += " thumbnail";
+    var cls = '';
+    if (isInvert) cls += ' invert';
+    if (isThumbnail) cls += ' thumbnail';
     document.body.className = cls;
   });
-  document.addEventListener("keydown", function(e) {
+  document.addEventListener('keydown', function(e) {
     switch (e.keyCode) {
       case 39:
       case 40:
@@ -270,13 +270,13 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
         break;
       case 27:
         e.preventDefault();
-        direct("#page=" + 0);
+        direct('#page=' + 0);
         break;
     }
   });
   setTimeout(function() {
     slider();
-    direct("#page=" + index);
+    direct('#page=' + index);
     document.body.style.opacity = 1;
   }, 16);
 })(this);

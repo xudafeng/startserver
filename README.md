@@ -18,7 +18,6 @@ startserver
 [download-image]: https://img.shields.io/npm/dm/startserver.svg?style=flat-square
 [download-url]: https://npmjs.org/package/startserver
 
-
 > A simple http server witch can be used like `python -m SimpleHTTPServer` and be more easy to generate a slider.
 
 ## Installment
