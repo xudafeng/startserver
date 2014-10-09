@@ -83,6 +83,7 @@ display: none;width: 384px;}
 .thumbnail #copyright {display: block;}
 .thumbnail .switcher {display: none!important;}
 </style>
+<base target="_blank"/>
 </head>
 <body>
 <div id="page">

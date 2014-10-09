@@ -299,6 +299,7 @@ body {padding: 0 20%; opacity: 0;transition: all 1s ease;}
   content:normal
 }
 </style>
+<base target="_blank"/>
 </head>
 <body>
 <div id="page" class="markdown">
