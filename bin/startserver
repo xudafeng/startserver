@@ -17,6 +17,7 @@
 process.title = 'startserver';
 
 var path = require('path');
+var net = require('net');
 var util = require('xutil');
 var ipv4 = require('ipv4') || 'localhost';
 var StartServer = require('../');
@@ -37,7 +38,7 @@ program
   .option('-v, --versions', 'output version infomation')
   .option('-n, --normal',  'start server without opening browser')
   .option('-s, --static', 'generate static file for markdown')
-  .usage('[port]')
+  .usage('[port 8080]')
   .parse(process.argv);
 
 if (program.versions) {
@@ -61,6 +62,7 @@ if (program.static) {
   process.exit(0);
 }
 
+
 var handle = function() {
   var port = parseInt(program.args[0] || 8080);
 
@@ -73,12 +75,29 @@ var handle = function() {
 
   middleware(server);
 
-  server.listen(port, ipv4, function(e) {
-    var url = 'http://' + ipv4 + ':' + port;
-    var opener = platform === 'win32' ? 'start' : platform === 'linux' ? 'xdg-open' : 'open';
-    !program.normal && exec(opener + ' ' + url);
-    url = 'http://' + ipv4.yellow + ':' + port.blue;
-    logger.info('Running at '.red + url);
+  var detectPort = function(callback) {
+    var server = net.createServer();
+    server.listen(port, ipv4, function (err) {
+      server.once('close', function () {
+        callback(port)
+      });
+      server.close();
+    });
+    server.on('error', function (err) {
+      logger.warn(port + ' port is occupied');
+      port ++;
+      detectPort(callback);
+    });
+  }
+
+  detectPort(function(port) {
+    server.listen(port, ipv4, function(e) {
+      var url = 'http://' + ipv4 + ':' + port;
+      var opener = platform === 'win32' ? 'start' : platform === 'linux' ? 'xdg-open' : 'open';
+      !program.normal && exec(opener + ' ' + url);
+      url = 'http://'.red + ipv4.red + ':'.red + port.gray;
+      logger.info('Running at '.gray + url);
+    });
   });
 }
 
