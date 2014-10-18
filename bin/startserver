@@ -26,12 +26,13 @@ var middleware = require('../lib/middleware');
 var markdown = require('../lib/middleware/markdown').markdown;
 var platform = process.platform;
 var program = require('commander');
-var request = require('request');
 var logger = require('logx');
 require('colorx');
 var pkg = require('../package.json');
 var open = true;
 var root = process.cwd();
+var https = require('https');
+var iconv = require('iconv-lite');
 
 
 program
@@ -90,29 +91,43 @@ var handle = function() {
     });
   }
 
+  var execHandle = function() {
+    var url = 'http://'.red + ipv4.red + ':'.red + port.gray;
+    logger.info('Running at '.gray + url);
+  }
+
   detectPort(function(port) {
     server.listen(port, ipv4, function(e) {
       var url = 'http://' + ipv4 + ':' + port;
       var opener = platform === 'win32' ? 'start' : platform === 'linux' ? 'xdg-open' : 'open';
-      !program.normal && exec(opener + ' ' + url);
-      url = 'http://'.red + ipv4.red + ':'.red + port.gray;
-      logger.info('Running at '.gray + url);
+      if (program.normal) {
+        execHandle();
+      } else {
+        exec(opener + ' ' + url, function(error) {
+          if (error !== null) logger.error('exec error: ' + error);
+          execHandle();
+        });
+      }
     });
   });
 }
 
-var opts = {
-  url: 'https://registry.npmjs.org/startserver/latest',
-  timeout: 1000
-};
-
-
-request(opts, function(err, res, body) {
-  if (err) return handle();
-  var data = JSON.parse(body);
-
-  if (data.version && pkg.version !== data.version) {
-    logger.warn('Your version [' + pkg.version.red + '] id outdate, please exec '.yellow + 'npm install -g startserver@'.gray + data.version.gray + ' to update。'.yellow);
-  }
+https.get('https://registry.npmjs.org/startserver/latest', function(res) {
+  if (res.statusCode !== 200) return handle();
+  var buffs = []
+  var size = 0;
+  res.on('data', function(d) {
+    buffs.push(d)
+    size += d.length;
+  }).on('end', function() {
+    var buf = Buffer.concat(buffs, size);
+    var str = iconv.decode(buf, 'utf8');
+    var data = JSON.parse(str);
+    if (data.version && pkg.version !== data.version) {
+      logger.warn('Your version [' + pkg.version.red + '] id outdate, please exec '.yellow + 'npm install -g startserver@'.gray + data.version.gray + ' to update。'.yellow);
+    }
+    handle();
+  });
+}).on('error', function(e) {
   handle();
 });

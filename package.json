@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.5.24",
+  "version": "0.5.26",
   "description": "A simple http server and be more easy to generate a slider.",
   "preferGlobal": true,
   "bin": {
@@ -21,8 +21,7 @@
     "marked": "0.3.2",
     "colorx": "0.0.5",
     "logx": "0.0.4",
-    "commander": "2.0.0",
-    "request": "~2.40.0"
+    "commander": "2.0.0"
   },
   "keywords": ["server","httpserver","demo","dev","slider"],
   "devDependencies": {
@@ -32,8 +31,8 @@
     "should-http": "0.0.2"
   },
   "scripts": {
-    "test": "mocha",
-    "test-travis": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- -t 20000 -r should-http test/*.test.js"
+    "test": "make test",
+    "travis": "make travis"
   },
   "homepage": "https://github.com/xudafeng/startserver",
   "author": "xudafeng",
