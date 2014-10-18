@@ -12,6 +12,9 @@ html{margin:0;padding:0;height:100%;}
 .invert .inner blockquote p,
 .invert .inner pre,
 .invert .inner code {color: #fff;background:#000;margin-left: 6px;}
+.invert .inner pre,
+.invert .inner ul,
+.invert .inner ol {color:#fff;}
 body {margin:0;padding:0;height:100%;background: #000;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;opacity:
 1;color:#fff;font-family: Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";}
 #page {width: 100%;height:100%;position:relative;overflow:hidden;}
