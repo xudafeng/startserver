@@ -208,7 +208,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   pages = page.querySelectorAll('.page');
 
   function delegate(target) {
-    return target.nodeName.toLowerCase() === 'article' ? target : delegate(target.parentElement);
+    return target.nodeName && target.nodeName.toLowerCase() === 'article' ? target : delegate(target.parentElement);
   }
 
   function getIndex(e) {
