@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.5.26",
+  "version": "0.5.28",
   "description": "A simple http server and be more easy to generate a slider.",
   "preferGlobal": true,
   "bin": {
@@ -21,7 +21,8 @@
     "marked": "0.3.2",
     "colorx": "0.0.5",
     "logx": "0.0.4",
-    "commander": "2.0.0"
+    "commander": "2.0.0",
+    "iconv-lite": "*"
   },
   "keywords": ["server","httpserver","demo","dev","slider"],
   "devDependencies": {
