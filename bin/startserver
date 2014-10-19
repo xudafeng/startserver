@@ -29,7 +29,6 @@ var program = require('commander');
 var logger = require('logx');
 require('colorx');
 var pkg = require('../package.json');
-var open = true;
 var root = process.cwd();
 var https = require('https');
 var iconv = require('iconv-lite');
