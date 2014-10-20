@@ -17,7 +17,7 @@ html{margin:0;padding:0;height:100%;}
 .invert .inner ol {color:#fff;}
 body {margin:0;padding:0;height:100%;background: #000;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;opacity:
 1;color:#fff;font-family: Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";}
-#page {width: 100%;height:100%;position:relative;overflow:hidden;}
+#page {width:100%;height:100%;position:relative;overflow-x:hidden;overflow-y:auto;}
 .page{color:white;width:100%;height:100%;overflow:hidden;text-align:left;position:absolute;opacity:0;transition:transform
 .8s ease;background:black;}
 .prev {opacity:0.2;transform: translate(-100%, 0);}
@@ -81,8 +81,8 @@ hidden;cursor: pointer;width: 20%;height: 20%;background: rgba(128, 128, 128,
 .thumbnail .page .inner hr,
 .thumbnail .page .inner blockquote{display: none;}
 #copyright { position: absolute; bottom: 20px; left: 50%; margin-left: -192px;
-display: none;width: 384px;}
-#copyright a {text-decoration: none;color: #D1C556;}
+display: none;width: 384px;font-weight:bold;}
+#copyright a {text-decoration: none;color: #D1C556;font-weight:bold;}
 .thumbnail #copyright {display: block;}
 .thumbnail .switcher {display: none!important;}
 </style>
@@ -238,6 +238,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
     slider();
   });
   global.addEventListener('mousewheel', function(e) {
+    if (isThumbnail) return;
     var target = pages[index - 1];
     var delta = e.wheelDelta / 120;
     target.scrollTop += delta > 0 ? -10 : 10;
