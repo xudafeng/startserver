@@ -42,7 +42,7 @@ program
   .parse(process.argv);
 
 if (program.versions) {
-  logger.info('your version is ' + pkg.version.gray);
+  console.info('\n  ' + pkg.version.gray + '\n');
   process.exit(0);
 }
 
