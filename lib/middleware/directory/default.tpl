@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <style>
-thead th{height: 40px;border-bottom: 1px #ccc solid;}
+body{font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;}
+h1{padding: 0 12px;}
+thead th{padding:6px 12px;text-align:left;border-bottom: 1px #ccc solid;}
 td{padding: 8px 12px 0 12px;}
 </style>
 </head>

@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.5.34",
+  "version": "0.6.0",
   "description": "A simple http server and be more easy to generate a slider.",
   "preferGlobal": true,
   "bin": {
@@ -15,17 +15,19 @@
     "url": "git://github.com/xudafeng/startserver.git"
   },
   "dependencies": {
-    "xutil":"0.1.1",
+    "foc": "~0.1.2",
     "ipv4":"0.0.4",
-    "microtemplate": "0.1.2",
+    "microtemplate": "~0.1.2",
     "marked": "0.3.2",
     "colorx": "0.0.5",
     "logx": "0.0.4",
+    "ecmascript6": "0.1.2",
     "commander": "2.0.0",
-    "iconv-lite": "*"
+    "co-request": "~0.2.0"
   },
   "keywords": ["server","httpserver","demo","dev","slider"],
   "devDependencies": {
+    "ali.regenerator": "~0.4.12",
     "mocha": "*",
     "istanbul": "*",
     "should": "~4.0.4",

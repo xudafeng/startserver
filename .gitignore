@@ -8,4 +8,4 @@ npm-debug.log
 Thumbs.db
 coverage/
 .project
-*.html
+build/

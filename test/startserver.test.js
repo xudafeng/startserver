@@ -1,6 +1,6 @@
 'use strict';
 
-var StartServer = require('../');
+var StartServer = require('../build/server');
 
 describe('startserver.js', function () {
   var server;
@@ -12,7 +12,7 @@ describe('startserver.js', function () {
       } catch (e) {
         error = e;
       }
-      (undefined === undefined).should.be.true;
+      (typeof error === 'undefined').should.be.true;
     });
   });
 

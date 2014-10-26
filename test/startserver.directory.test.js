@@ -1,7 +1,7 @@
 'use strict';
 
 var http = require('http');
-var directoryModel = require('../lib/middleware/directory');
+var directoryModel = require('../build/middleware/directory');
 
 describe('lib/middleware/directory', function () {
 

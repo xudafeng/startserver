@@ -1,9 +1,9 @@
 'use strict';
 
 var http = require('http');
-var staticModel = require('../lib/middleware/static');
+var staticModel = require('../build/middleware/static');
 
-describe('lib/middleware/static', function () {
+describe('build/middleware/static', function () {
 
   it('static should be working ok', function (done) {
 
