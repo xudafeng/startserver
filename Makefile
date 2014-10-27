@@ -1,9 +1,6 @@
-TESTS = $(shell find test -type f -name "*.test.js")
 SRC=$(shell find lib -type f -name "*.js")
 BUILD = $(subst lib/,build/,$(SRC))
 REPORTER = spec
-TIMEOUT = 10000
-MOCHA_OPTS =
 
 all: test
 install:
@@ -18,16 +15,16 @@ publish: build
 	@npm publish
 clean:
 	@rm -rf build
-test: install build
-	@NODE_ENV=test ./node_modules/.bin/mocha \
-		--reporter $(REPORTER) \
-		--timeout $(TIMEOUT) \
-		--harmony-generators \
-		$(TESTS)
+test:
+	@node --harmony \
+		node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha \
+		-- \
+		--reporter spec \
+		--timeout 10000 \
+		--require co-mocha
 travis: install
 	@NODE_ENV=test ./node_modules/.bin/istanbul cover \
 		./node_modules/.bin/_mocha \
 		--report lcovonly \
 		-- -t 20000 -r should-http test/*.test.js
-
 .PHONY: test
