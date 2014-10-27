@@ -15,7 +15,7 @@ publish: build
 	@npm publish
 clean:
 	@rm -rf build
-test:
+test: install build
 	@node --harmony \
 		node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha \
 		-- \
