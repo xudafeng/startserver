@@ -6,3 +6,4 @@ Makefile
 .jshintrc
 .jshintignore
 coverage/
+*.html

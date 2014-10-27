@@ -4,17 +4,14 @@
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <style>
-    thead th{
-        height: 40px;
-        border-bottom: 1px #ccc solid;
-    }
-    td{
-        padding: 8px 12px 0 12px;
-    }
+body{font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;}
+h1{padding: 0 12px;}
+thead th{padding:6px 12px;text-align:left;border-bottom: 1px #ccc solid;}
+td{padding: 8px 12px 0 12px;}
 </style>
 </head>
 <body>
-<h1>Index of <#=$path#></h1>
+<h1>Index of <#=path#></h1>
 <table>
   <thead>
     <tr>
@@ -22,21 +19,22 @@
     <th>Last modified</th>
     <th>Size</th>
   </thead>
-  <#if $parentDir#>
+  <#if (parentDir) {#>
   <tbody>
     <tr>
-      <td colspan="3"><a href="<#=$parentDir#>">Parent Directory</a></td>
+      <td colspan="3"><a href="<#=parentDir#>">Parent Directory</a></td>
     </tr>
   </tbody>
-  <#/if#>
+  <#}#>
   <tbody>
-  <#each val,index in $list#>
+  <#for (var i =0; i< list.length; i++) {#>
+    <#var item = list[i]#>
     <tr>
-      <td><a href="<#=$val.path#>"><#=$val.name#></a></td>
-      <td><#=$val.lastModified#></td>
-      <td><#=$val.size#></td>
+      <td><a href="<#=item.path#>"><#=item.name#></a></td>
+      <td><#=item.lastModified#></td>
+      <td><#=item.size#></td>
     </tr>
-  <#/each#>
+  <#}#>
   </tbody>
 </table>
 </body>
