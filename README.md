@@ -1,5 +1,5 @@
 startserver
-===
+===========
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
@@ -18,26 +18,86 @@ startserver
 [download-image]: https://img.shields.io/npm/dm/startserver.svg?style=flat-square
 [download-url]: https://npmjs.org/package/startserver
 
-> A simple http server and be more easy to generate a slider.
+> Yet an other http server.
 
-## Installment
+> Be more easy to generate a slider.
 
-```bash
+## Installation
+
+### Node requirement
+
+\>= 0.10.x
+
+### Install from npm
+
+``` bash
 $ npm i startserver -g
+```
+
+Want to use it for generator support, please add this alias to your `.bash_profile`:
+
+```
+alias node='node --harmony'
 ```
 
 ## Quick Start
 
-```bash
+``` bash
 $ startserver
+```
+
+Could also use it like this:
+
+``` base
+$ startserver 6789
+```
+
+There are more shorter alias for cli:
+
+``` base
 $ start
 $ server
 $ ss
 ```
 
+## Features
+
+### Server Everywhere
+
+Run it in every directory under the root.
+
+### Slider Revolution
+
+Generate slider with `README` doc or other markdown file.
+
+  * Suppor a inverse color.
+  * Double click for temporary modifications.
+  * Normal to read makedown.
+  * Highlight for your code block.
+  * Thumbnail mode is provided.
+
+### Others
+
+  * Original javascript
+  * Generator support and compatible runtime.
+
+## Cli Options
+
+#### -n, --normal
+
+Run server without open the default browser.
+
+#### -s, --static
+
+Generate a static slider file. [[example]](./README.md.html)
+
+``` base
+$ startsever -s README.md
+```
+
 ## Help
 
-```bash
+``` bash
 $ startserver -h
 ```
 

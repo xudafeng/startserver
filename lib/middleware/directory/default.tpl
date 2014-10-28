@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <style>
-body{font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;}
+body{font-family: "HelveticaNeue",Helvetica,"SegoeUI",Arial,freesans,sans-serif;opacity: 0;transition: all .5s ease;}
 h1{padding: 0 12px;}
 thead th{padding:6px 12px;text-align:left;border-bottom: 1px #ccc solid;}
 td{padding: 8px 12px 0 12px;}
@@ -37,5 +37,12 @@ td{padding: 8px 12px 0 12px;}
   <#}#>
   </tbody>
 </table>
+<script>
+(function(global, undefined) {
+  setTimeout(function() {
+    document.body.style.opacity = 1;
+  }, 16);
+})(this)
+</script>
 </body>
 </html>

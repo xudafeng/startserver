@@ -43,9 +43,7 @@ if (program.static) {
     logger.warn('Arguments Error.');
     return program.help();
   }
-
-  startserver.generate(args[0]);
-  process.exit(0);
+  return startserver.generate(args[0]);
 }
 
 var port = parseInt(program.args[0] || 8080);

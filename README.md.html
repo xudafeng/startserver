@@ -5,7 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <title>server</title>
 <style>
-html{margin:0;padding:0;height:100%;}
+/* invert */
 .invert {background: #fff;}
 .invert #page .page {background: #fff;color: #000;}
 .invert .right-top {color: #000;}
@@ -16,6 +16,8 @@ html{margin:0;padding:0;height:100%;}
 .invert .inner ul,
 .invert .inner ol {color:#fff;}
 .invert .inner li {color:#000;}
+/* base */
+html{margin:0;padding:0;height:100%;}
 body {margin:0;padding:0;height:100%;background: #000;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;opacity:
 1;color:#fff;font-family: Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";}
 #page {width:100%;height:100%;position:relative;overflow-x:hidden;overflow-y:auto;}
@@ -24,6 +26,18 @@ body {margin:0;padding:0;height:100%;background: #000;-webkit-text-size-adjust:1
 .prev {opacity:0.2;transform: translate(-100%, 0);}
 .current {opacity:1;z-index:999;}
 .next {opacity:0.2;transform: translate(100%, 0);}
+.right-top {transition:all .5s ease;position: absolute;top: 20px;right:
+20px;z-index: 99999;opacity: 0.4;}
+.right-top:hover {opacity: 0.8;}
+.switcher {background-color: rgba(123, 123, 123, 0.1);border: none;top:
+0;font-size: 40px;margin: 0;max-width: 150px;min-width: 80px;outline:
+none;padding: 0;position: absolute;top: 0;z-index: 9999;color: rgba(158, 158,
+158, 0.5);height:100%;}
+.switcher:hover, .switcher:focus {cursor: pointer;background-color: rgba(123, 123, 123, 0.2);}
+#copyright { position: absolute; bottom: 20px; left: 50%; margin-left: -192px;
+display: none;width: 384px;font-weight:bold;}
+#copyright a {text-decoration: none;color: #D1C556;font-weight:bold;}
+/* inner */
 .inner {margin: 40px 100px;}
 .inner a {text-decoration: none;color: #e7ad52;cursor:pointer;font-weight: bold;}
 .inner h1 {font-size:55px;padding-bottom: 8px;}
@@ -48,14 +62,9 @@ collapse;margin:0 auto; border:2px solid #666; }
 .inner table th,
 .inner table td{text-align: left; border:1px solid #666; padding: 0.8em 1em;}
 .inner table th { background: rgba(244, 253, 255, 0.24);font-weight: bold;padding: 1em;}
-.switcher {background-color: rgba(123, 123, 123, 0.1);border: none;top:
-0;font-size: 40px;margin: 0;max-width: 150px;min-width: 80px;outline:
-none;padding: 0;position: absolute;top: 0;z-index: 9999;color: rgba(158, 158,
-158, 0.5);height:100%;}
-.switcher:hover, .switcher:focus {cursor: pointer;background-color: rgba(123, 123, 123, 0.2);}
-.right-top {transition:all .5s ease;position: absolute;top: 20px;right:
-20px;z-index: 99999;opacity: 0.4;}
-.right-top:hover {opacity: 0.8;}
+.inner img{transition: all 1s linear;width:auto;}
+.inner img:hover {width: 100%!important;}
+/* thumbnail */
 .thumbnail {background: #000;}
 .thumbnail .page {position: static;display: inline-block;overflow:
 hidden;cursor: pointer;width: 20%;height: 20%;background: rgba(128, 128, 128,
@@ -81,11 +90,10 @@ hidden;cursor: pointer;width: 20%;height: 20%;background: rgba(128, 128, 128,
 .thumbnail .page .inner b,
 .thumbnail .page .inner hr,
 .thumbnail .page .inner blockquote{display: none;}
-#copyright { position: absolute; bottom: 20px; left: 50%; margin-left: -192px;
-display: none;width: 384px;font-weight:bold;}
-#copyright a {text-decoration: none;color: #D1C556;font-weight:bold;}
 .thumbnail #copyright {display: block;}
 .thumbnail .switcher {display: none!important;}
+/* highlight */
+.hljs{display:block;overflow-x:auto;padding:.5em;background:#fdf6e3;color:#657b83;-webkit-text-size-adjust:none}.hljs-comment,.hljs-template_comment,.diff .hljs-header,.hljs-doctype,.hljs-pi,.lisp .hljs-string,.hljs-javadoc{color:#93a1a1}.hljs-keyword,.hljs-winutils,.method,.hljs-addition,.css .hljs-tag,.hljs-request,.hljs-status,.nginx .hljs-title{color:#859900}.hljs-number,.hljs-command,.hljs-string,.hljs-tag .hljs-value,.hljs-rules .hljs-value,.hljs-phpdoc,.hljs-dartdoc,.tex .hljs-formula,.hljs-regexp,.hljs-hexcolor,.hljs-link_url{color:#2aa198}.hljs-title,.hljs-localvars,.hljs-chunk,.hljs-decorator,.hljs-built_in,.hljs-identifier,.vhdl .hljs-literal,.hljs-id,.css .hljs-function{color:#268bd2}.hljs-attribute,.hljs-variable,.lisp .hljs-body,.smalltalk .hljs-number,.hljs-constant,.hljs-class .hljs-title,.hljs-parent,.hljs-type,.hljs-link_reference{color:#b58900}.hljs-preprocessor,.hljs-preprocessor .hljs-keyword,.hljs-pragma,.hljs-shebang,.hljs-symbol,.hljs-symbol .hljs-string,.diff .hljs-change,.hljs-special,.hljs-attr_selector,.hljs-subst,.hljs-cdata,.css .hljs-pseudo,.hljs-header{color:#cb4b16}.hljs-deletion,.hljs-important{color:#dc322f}.hljs-link_label{color:#6c71c4}.tex .hljs-formula{background:#eee8d5}
 </style>
 <base target="_blank"/>
 </head>
@@ -98,19 +106,54 @@ display: none;width: 384px;font-weight:bold;}
 <a href="http://nodejs.org/download/"><img src="https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square" alt="node version"></a>
 <a href="https://npmjs.org/package/startserver"><img src="https://img.shields.io/npm/dm/startserver.svg?style=flat-square" alt="npm download"></a></p>
 <blockquote>
-<p>A simple http server and be more easy to generate a slider.</p>
+<p>Yet an other http server.</p>
+<p>Be more easy to generate a slider.</p>
 </blockquote>
-<h2 id="installment">Installment</h2>
-<pre><code class="lang-bash">$ npm i startserver -g
+<h2 id="installation">Installation</h2>
+<h3 id="node-requirement">Node requirement</h3>
+<p>>= 0.10.x</p>
+<h3 id="install-from-npm">Install from npm</h3>
+<pre><code class="lang-bash">$ npm <span class="hljs-tag">i</span> startserver -g
 </code></pre>
-<h2 id="quick-start">Quick Start</h2>
-<pre><code class="lang-bash">$ startserver
-$ start
-$ server
-$ ss
+<p>Want to use it for generator support, please add this alias to your <code>.bash_profile</code>:</p>
+<pre><code><span class="hljs-literal">alias</span> <span class="hljs-keyword">node</span>=<span class="hljs-string">'node --harmony'</span>
+</code></pre><h2 id="quick-start">Quick Start</h2>
+<pre><code class="lang-bash"><span class="hljs-variable">$ </span>startserver
+</code></pre>
+<p>Could also use it like this:</p>
+<pre><code class="lang-base"><span class="hljs-variable">$ </span>startserver <span class="hljs-number">6789</span>
+</code></pre>
+<p>There are more shorter alias for cli:</p>
+<pre><code class="lang-base"><span class="hljs-variable">$ </span>start
+<span class="hljs-variable">$ </span>server
+<span class="hljs-variable">$ </span>ss
+</code></pre>
+<h2 id="features">Features</h2>
+<h3 id="server-everywhere">Server Everywhere</h3>
+<p>Run it in every directory under the root.</p>
+<h3 id="slider-revolution">Slider Revolution</h3>
+<p>Generate slider with <code>README</code> doc or other markdown file.</p>
+<ul>
+<li>Suppor a inverse color.</li>
+<li>Double click for temporary modifications.</li>
+<li>Normal to read makedown.</li>
+<li>Highlight for your code block.</li>
+<li>Thumbnail mode is provided.</li>
+</ul>
+<h3 id="others">Others</h3>
+<ul>
+<li>Original javascript</li>
+<li>Generator support and compatible runtime.</li>
+</ul>
+<h2 id="cli-options">Cli Options</h2>
+<h4 id="-n-normal">-n, --normal</h4>
+<p>Run server without open the default browser.</p>
+<h4 id="-s-static">-s, --static</h4>
+<p>Generate a static slider file. <a href="./README.md.html">[example]</a></p>
+<pre><code class="lang-base">$ startsever <span class="hljs-operator">-s</span> README.md
 </code></pre>
 <h2 id="help">Help</h2>
-<pre><code class="lang-bash">$ startserver -h
+<pre><code class="lang-bash"><span class="hljs-variable">$ </span>startserver -h
 </code></pre>
 <h2 id="license">License</h2>
 <p>The MIT License (MIT)</p>
@@ -304,6 +347,12 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
         break;
     }
   });
+  setTimeout(function() {
+    var images = document.querySelectorAll('img');
+    for (var i = 0; i < images.length; i ++) {
+      images[i].setAttribute('style', 'width:' + images[i].width + 'px;');
+    }
+  }, 5000);
   setTimeout(function() {
     slider();
     direct('#page=' + index);

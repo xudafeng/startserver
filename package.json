@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.6.6",
+  "version": "0.6.10",
   "description": "A simple http server and be more easy to generate a slider.",
   "preferGlobal": true,
   "bin": {
@@ -18,11 +18,12 @@
     "foc": "~0.1.6",
     "ipv4":"0.0.4",
     "microtemplate": "~0.1.2",
-    "marked": "0.3.2",
+    "marked": "~0.3.2",
+    "highlight.js": "~8.3.0",
     "colorx": "0.0.5",
     "logx": "0.0.4",
-    "ecmascript6": "0.1.2",
-    "commander": "2.0.0",
+    "ecmascript6": "~0.1.2",
+    "commander": "~2.0.0",
     "co-request": "~0.2.0"
   },
   "keywords": ["server","httpserver","demo","dev","slider"],
@@ -31,7 +32,8 @@
     "mocha": "*",
     "co-mocha": "~1.0.2",
     "istanbul-harmony": "~0.3.0",
-    "should": "~4.0.4"
+    "should": "~4.0.4",
+    "should-http": "~0.0.2"
   },
   "scripts": {
     "test": "make test"
