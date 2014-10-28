@@ -89,7 +89,7 @@ Run server without open the default browser.
 
 #### -s, --static
 
-Generate a static slider file. [[example]](./README.md.html)
+Generate a static slider file. [[example]](https://rawgit.com/xudafeng/startserver/master/README.md.html)
 
 ``` base
 $ startsever -s README.md
