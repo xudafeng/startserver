@@ -7,12 +7,10 @@ install:
 	@npm install
 build/%.js: lib/%.js
 	./node_modules/.bin/regenerator --include-runtime $< > $@
-build: update clean
+build: clean
 	@cp -rf lib build
 	@find build -type f -name "*.js" | xargs rm
 	@$(MAKE) $(BUILD)
-update:
-	@./bin/startserver -s README.md
 publish: build
 	@npm publish
 clean:
