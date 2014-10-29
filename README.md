@@ -20,7 +20,7 @@ startserver
 
 > Yet an other http server.
 
-> Be more easy to generate a slider.
+> And generate a slider easily.
 
 ## Installation
 
@@ -34,7 +34,7 @@ startserver
 $ npm i startserver -g
 ```
 
-Want to use it for generator support, please add this alias to your `.bash_profile`:
+Use it for generator support, add this alias to your `.bash_profile`:
 
 ```
 alias node='node --harmony'
@@ -46,7 +46,7 @@ alias node='node --harmony'
 $ startserver
 ```
 
-Could also use it like this:
+It also can be use it like this:
 
 ``` base
 $ startserver 6789
@@ -66,19 +66,21 @@ $ ss
 
 Run it in every directory under the root.
 
+  * Automatic detection of unoccupied port.
+
 ### Slider Revolution
 
 Generate slider with `README` doc or other markdown file.
 
-  * Suppor a inverse color.
-  * Double click for temporary modifications.
+  * Suppor a inverse color style.
+  * Double click for temporary modifications, again to restore.
   * Normal to read makedown.
   * Highlight for your code block.
-  * Thumbnail mode is provided.
+  * Thumbnail mode provided.
 
 ### Others
 
-  * Original javascript
+  * Original javascript source code.
   * Generator support and compatible runtime.
 
 ## Cli Options
