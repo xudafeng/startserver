@@ -24,8 +24,9 @@ var pkg = require('../package.json');
 
 program
   .option('-v, --versions', 'output version infomation')
-  .option('-n, --normal',  'start server without opening browser')
-  .option('-s, --static', 'generate static file for markdown')
+  .option('-n, --normal',   'start http server without opening browser')
+  .option('-s, --static',   'generate static slide file for markdown')
+  .option('-p, --plugins',  'show plugin list')
   .usage('[port 8080]')
   .parse(process.argv);
 
@@ -35,6 +36,10 @@ if (program.versions) {
 }
 
 var startserver = require('..');
+
+if (program.plugins) {
+  return startserver.plugins();
+}
 
 if (program.static) {
   var args = program.args;

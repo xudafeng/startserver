@@ -9,3 +9,4 @@ Thumbs.db
 coverage/
 .project
 build/
+plugins/
