@@ -27,4 +27,6 @@ travis: install
 		./node_modules/.bin/_mocha \
 		--report lcovonly \
 		-- -t 20000 -r should-http test/*.test.js
+jshint:
+	@./node_modules/jshint/bin/jshint .
 .PHONY: test
