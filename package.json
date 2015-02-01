@@ -1,7 +1,7 @@
 {
   "name": "startserver",
-  "version": "0.6.34",
-  "description": "A simple http server and be more easy to generate a slider.",
+  "version": "0.6.36",
+  "description": "Yet another http server. ",
   "preferGlobal": true,
   "bin": {
     "ss": "./bin/startserver",

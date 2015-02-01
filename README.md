@@ -85,16 +85,16 @@ Generate slider with `README` doc or other markdown file.
 
 ## Cli Options
 
-#### -n, --normal
+#### -s, --silent
 
 Run server without open the default browser.
 
-#### -s, --static
+#### -g, --generate
 
 Generate a static slider file. [[example]](https://rawgit.com/xudafeng/startserver/master/README.md.html)
 
-``` base
-$ startsever -s README.md
+``` bash
+$ startsever -g README.md
 ```
 
 ## Help

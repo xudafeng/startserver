@@ -1,3 +1,9 @@
+0.6.36 / 2015-1-30
+==================
+
+  * Support respose certification
+  * Add X-Powered-By to header
+
 0.5.26 / 2014-10-18
 ===================
 

@@ -24,8 +24,8 @@ var pkg = require('../package.json');
 
 program
   .option('-v, --versions', 'output version infomation')
-  .option('-n, --normal',   'start http server without opening browser')
-  .option('-s, --static',   'generate static slide file for markdown')
+  .option('-s, --silent',   'start http server without opening browser')
+  .option('-g, --generate', 'generate static slide file for markdown')
   .option('-p, --plugins',  'show plugin list')
   .usage('[port 8080]')
   .parse(process.argv);
@@ -41,7 +41,7 @@ if (program.plugins) {
   return startserver.plugins();
 }
 
-if (program.static) {
+if (program.generate) {
   var args = program.args;
 
   if (args.length !== 1) {
@@ -58,4 +58,5 @@ if (isNaN(port)) {
   return program.help();
 }
 
+program.pkg = pkg;
 startserver.init(port, program);
