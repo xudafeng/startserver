@@ -16,8 +16,8 @@ td{padding: 8px 12px 0 12px;}
   <thead>
     <tr>
     <th>Name</th>
-    <th>Last modified</th>
     <th>Size</th>
+    <th>Last modified</th>
   </thead>
   <#if (parentDir) {#>
   <tbody>
@@ -31,18 +31,18 @@ td{padding: 8px 12px 0 12px;}
     <#var item = list[i]#>
     <tr>
       <td><a href="<#=item.path#>"><#=item.name#></a></td>
-      <td><#=item.lastModified#></td>
       <td><#=item.size#></td>
+      <td><#=item.lastModified#></td>
     </tr>
   <#}#>
   </tbody>
 </table>
 <script>
-(function(global, undefined) {
++function(global, undefined) {
   setTimeout(function() {
     document.body.style.opacity = 1;
   }, 16);
-})(this)
+}(this);
 </script>
 </body>
 </html>

@@ -1,3 +1,20 @@
+1.1.0 / 2015-4-21
+==================
+
+  * Add pdf style
+
+1.0.0 / 2015-3-15
+==================
+
+  * Add plugin function in package.json
+  * Bugfix unknow mime type
+
+0.6.40 / 2015-2-11
+==================
+
+  * Support optional index router
+  * Bugfix markdown render
+
 0.6.36 / 2015-1-30
 ==================
 

@@ -94,10 +94,12 @@ hidden;cursor: pointer;width: 20%;height: 20%;background: rgba(128, 128, 128,
 .thumbnail .switcher {display: none!important;}
 /* highlight */
 .hljs{display:block;overflow-x:auto;padding:.5em;background:#fdf6e3;color:#657b83;-webkit-text-size-adjust:none}.hljs-comment,.hljs-template_comment,.diff .hljs-header,.hljs-doctype,.hljs-pi,.lisp .hljs-string,.hljs-javadoc{color:#93a1a1}.hljs-keyword,.hljs-winutils,.method,.hljs-addition,.css .hljs-tag,.hljs-request,.hljs-status,.nginx .hljs-title{color:#859900}.hljs-number,.hljs-command,.hljs-string,.hljs-tag .hljs-value,.hljs-rules .hljs-value,.hljs-phpdoc,.hljs-dartdoc,.tex .hljs-formula,.hljs-regexp,.hljs-hexcolor,.hljs-link_url{color:#2aa198}.hljs-title,.hljs-localvars,.hljs-chunk,.hljs-decorator,.hljs-built_in,.hljs-identifier,.vhdl .hljs-literal,.hljs-id,.css .hljs-function{color:#268bd2}.hljs-attribute,.hljs-variable,.lisp .hljs-body,.smalltalk .hljs-number,.hljs-constant,.hljs-class .hljs-title,.hljs-parent,.hljs-type,.hljs-link_reference{color:#b58900}.hljs-preprocessor,.hljs-preprocessor .hljs-keyword,.hljs-pragma,.hljs-shebang,.hljs-symbol,.hljs-symbol .hljs-string,.diff .hljs-change,.hljs-special,.hljs-attr_selector,.hljs-subst,.hljs-cdata,.css .hljs-pseudo,.hljs-header{color:#cb4b16}.hljs-deletion,.hljs-important{color:#dc322f}.hljs-link_label{color:#6c71c4}.tex .hljs-formula{background:#eee8d5}
+
 </style>
 <base target="_blank"/>
 </head>
 <body>
+<input type="hidden" id="mode" value=""/>
 <div id="page">
 <h1 id="startserver">startserver</h1>
 <p><a href="https://npmjs.org/package/startserver"><img src="https://img.shields.io/npm/v/startserver.svg?style=flat-square" alt="NPM version"></a>
@@ -106,8 +108,7 @@ hidden;cursor: pointer;width: 20%;height: 20%;background: rgba(128, 128, 128,
 <a href="http://nodejs.org/download/"><img src="https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square" alt="node version"></a>
 <a href="https://npmjs.org/package/startserver"><img src="https://img.shields.io/npm/dm/startserver.svg?style=flat-square" alt="npm download"></a></p>
 <blockquote>
-<p>Yet an other http server.</p>
-<p>And generate a slider easily.</p>
+<p>Yet another http server.</p>
 </blockquote>
 <h2 id="installation">Installation</h2>
 <h3 id="node-requirement">Node requirement</h3>
@@ -117,25 +118,24 @@ hidden;cursor: pointer;width: 20%;height: 20%;background: rgba(128, 128, 128,
 </code></pre>
 <p>Use it for generator support, add this alias to your <code>.bash_profile</code>:</p>
 <pre><code><span class="hljs-literal">alias</span> <span class="hljs-keyword">node</span>=<span class="hljs-string">'node --harmony'</span>
-</code></pre><h2 id="quick-start">Quick Start</h2>
+</code></pre><p>Or you&#39;d better use <a href="https://iojs.org/cn/index.html">io.js</a> as an alternative.</p>
+<h2 id="quick-start">Quick Start</h2>
 <pre><code class="lang-bash"><span class="hljs-variable">$ </span>startserver
 </code></pre>
 <p>It also can be use it like this:</p>
 <pre><code class="lang-base"><span class="hljs-variable">$ </span>startserver <span class="hljs-number">6789</span>
 </code></pre>
-<p>There are more shorter alias for cli:</p>
-<pre><code class="lang-base"><span class="hljs-variable">$ </span>start
-<span class="hljs-variable">$ </span>server
-<span class="hljs-variable">$ </span>ss
+<p>There are more shorter alias for it:</p>
+<pre><code class="lang-base"><span class="hljs-variable">$ </span>ss
 </code></pre>
 <h2 id="features">Features</h2>
 <h3 id="server-everywhere">Server Everywhere</h3>
-<p>Run it in every directory under the root.</p>
+<p>Run it at every directory under the root.</p>
 <ul>
 <li>Automatic detection of unoccupied port.</li>
 </ul>
 <h3 id="slider-revolution">Slider Revolution</h3>
-<p>Generate slider with <code>README</code> doc or other markdown file.</p>
+<p>Generate slider with <code>README.md</code> file or other markdown file.</p>
 <ul>
 <li>Suppor a inverse color style.</li>
 <li>Double click for temporary modifications, again to restore.</li>
@@ -145,16 +145,32 @@ hidden;cursor: pointer;width: 20%;height: 20%;background: rgba(128, 128, 128,
 </ul>
 <h3 id="others">Others</h3>
 <ul>
-<li>Original javascript source code.</li>
 <li>Generator support and compatible runtime.</li>
+<li>Original javascript source code.</li>
 </ul>
-<h2 id="cli-options">Cli Options</h2>
-<h4 id="-s-silent">-s, --silent</h4>
-<p>Run server without open the default browser.</p>
-<h4 id="-g-generate">-g, --generate</h4>
-<p>Generate a static slider file. <a href="https://rawgit.com/xudafeng/startserver/master/README.md.html">[example]</a></p>
-<pre><code class="lang-bash">$ startsever -g README.<span class="hljs-built_in">md</span>
+<h2 id="commands">Commands</h2>
+<h4 id="plugins">plugins</h4>
+<p>show plugin list</p>
+<h4 id="generate">generate</h4>
+<pre><code class="lang-bash">$ startsever generate README.<span class="hljs-built_in">md</span>
 </code></pre>
+<p>generate static slide file to markdown <a href="https://rawgit.com/xudafeng/startserver/master/README.md.html">[sample]</a></p>
+<h2 id="plugins">Plugins</h2>
+<p><img src="https://avatars3.githubusercontent.com/u/9607546?v=3&amp;s=100" alt="logo"></p>
+<p><a href="https://github.com/startserver">plugins list</a></p>
+<h2 id="options">Options</h2>
+<h4 id="-s-silent">-s, --silent</h4>
+<p>start http server without opening browser</p>
+<h4 id="-m-markdown">-m, --markdown</h4>
+<p>auto parse and render markdown file</p>
+<h4 id="-f-pdf">-f, --pdf</h4>
+<p>render markdown file with pdf style</p>
+<h4 id="-p-port">-p, --port</h4>
+<p>port to use (8080 default)</p>
+<h4 id="-d-disable">-d, --disable</h4>
+<p>disable default index router</p>
+<h4 id="-v-version">-v, --version</h4>
+<p>output version infomation</p>
 <h2 id="help">Help</h2>
 <pre><code class="lang-bash"><span class="hljs-variable">$ </span>startserver -h
 </code></pre>
@@ -178,8 +194,10 @@ target="_blank">Startserver</a> <iframe
 src="http://ghbtns.com/github-btn.html?user=xudafeng&repo=startserver&type=watch&count=true"
 allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe></div>
 <script>
-(function(global, undefined) {
++function(global, undefined) {
   var isSlide = document.getElementById('slide').checked;
+  var mode = document.getElementById('mode');
+  var ispdf = mode.value === 'pdf';
   var index = location.hash.split('=')[1] || 1;
   var left = document.getElementById('left');
   var right = document.getElementById('right');
@@ -248,7 +266,9 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   }
 
   function slider() {
-    if (index == 0) return thumbnail();
+    if (index == 0) {
+      return thumbnail();
+    };
     removeClass();
     addClass(index - 1, 'current');
     setTimeout(function() {
@@ -258,15 +278,20 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   }
 
   var temp = '';
-
-  for (var i = 0;i < pages.length;i++) {
+  var counter = 0;
+  for (var i = 0;i < pages.length; i++) {
     var current = pages[i];
     var tagName = current.tagName;
     var nextTag = pages[i + 1];
     var nextTagName = nextTag ? nextTag.tagName : null;
 
     if (i === 0 || tagName === 'H1' || tagName === 'H2') {
-      temp += '<article class=\'page\'><div class=\'inner\'>';
+      temp += '<article class="page"';
+      if (ispdf) {
+        temp += ' style= "transform: translate(0, ' + 100 * counter + '%);"';
+      }
+      temp += '><div class="inner">';
+      counter ++;
     }
     temp += current.outerHTML;
 
@@ -278,6 +303,10 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
   page.innerHTML = temp + '<\/div><\/article>';
   pages = page.querySelectorAll('.page');
 
+  if (ispdf) {
+    return;
+  }
+
   function delegate(target) {
     return target.nodeName && target.nodeName.toLowerCase() === 'article' ? target : delegate(target.parentElement);
   }
@@ -286,12 +315,12 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
     var p = e.parentNode;
     var c = p.children;
     for (var i=0; i < c.length; i++) {
-      if (c[i] == e) return i;
+      if (c[i] == e) {
+        return i;
+      };
     }
   }
-
   radios.addEventListener('click', function(e) {
-
     if (e.target.nodeName === 'INPUT' && e.target.value === 'true') {
       setCookie('startserver-slide', false, 240);
       direct();
@@ -357,11 +386,10 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
     }
   }, 5000);
   setTimeout(function() {
-    slider();
     direct('#page=' + index);
     document.body.style.opacity = 1;
   }, 16);
-})(this);
+}(this);
 </script>
 </body>
 </html>

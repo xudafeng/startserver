@@ -18,9 +18,7 @@ startserver
 [download-image]: https://img.shields.io/npm/dm/startserver.svg?style=flat-square
 [download-url]: https://npmjs.org/package/startserver
 
-> Yet an other http server.
-
-> And generate a slider easily.
+> Yet another http server.
 
 ## Installation
 
@@ -40,6 +38,8 @@ Use it for generator support, add this alias to your `.bash_profile`:
 alias node='node --harmony'
 ```
 
+Or you'd better use [io.js](https://iojs.org/cn/index.html) as an alternative.
+
 ## Quick Start
 
 ``` bash
@@ -52,11 +52,9 @@ It also can be use it like this:
 $ startserver 6789
 ```
 
-There are more shorter alias for cli:
+There are more shorter alias for it:
 
 ``` base
-$ start
-$ server
 $ ss
 ```
 
@@ -64,13 +62,13 @@ $ ss
 
 ### Server Everywhere
 
-Run it in every directory under the root.
+Run it at every directory under the root.
 
   * Automatic detection of unoccupied port.
 
 ### Slider Revolution
 
-Generate slider with `README` doc or other markdown file.
+Generate slider with `README.md` file or other markdown file.
 
   * Suppor a inverse color style.
   * Double click for temporary modifications, again to restore.
@@ -80,29 +78,59 @@ Generate slider with `README` doc or other markdown file.
 
 ### Others
 
-  * Original javascript source code.
   * Generator support and compatible runtime.
+  * Original javascript source code.
 
-## Cli Options
+## Commands
+
+#### plugins
+
+show plugin list
+
+#### generate
+
+``` bash
+$ startsever generate README.md
+```
+generate static slide file to markdown [[sample]](https://rawgit.com/xudafeng/startserver/master/README.md.html)
+
+## Plugins
+
+![logo](https://avatars3.githubusercontent.com/u/9607546?v=3&s=100)
+
+[plugins list](https://github.com/startserver)
+
+## Options
 
 #### -s, --silent
 
-Run server without open the default browser.
+start http server without opening browser
 
-#### -g, --generate
+#### -m, --markdown
 
-Generate a static slider file. [[example]](https://rawgit.com/xudafeng/startserver/master/README.md.html)
+auto parse and render markdown file
 
-``` bash
-$ startsever -g README.md
-```
+#### -f, --pdf
+
+render markdown file with pdf style
+
+#### -p, --port
+
+port to use (8080 default)
+
+#### -d, --disable
+
+disable default index router
+
+#### -v, --version
+
+output version infomation
 
 ## Help
 
 ``` bash
 $ startserver -h
 ```
-
 ## License
 
 The MIT License (MIT)
