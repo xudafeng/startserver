@@ -18,7 +18,7 @@ startserver
 [download-image]: https://img.shields.io/npm/dm/startserver.svg?style=flat-square
 [download-url]: https://npmjs.org/package/startserver
 
-> Yet an other http server.
+> Yet another http server.
 
 > And generate a slider easily.
 
