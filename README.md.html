@@ -117,7 +117,8 @@ hidden;cursor: pointer;width: 20%;height: 20%;background: rgba(128, 128, 128,
 </code></pre>
 <p>Use it for generator support, add this alias to your <code>.bash_profile</code>:</p>
 <pre><code><span class="hljs-literal">alias</span> <span class="hljs-keyword">node</span>=<span class="hljs-string">'node --harmony'</span>
-</code></pre><h2 id="quick-start">Quick Start</h2>
+</code></pre><p>Or use can use <a href="https://iojs.org/cn/index.html">io.js</a> with out any flag now.</p>
+<h2 id="quick-start">Quick Start</h2>
 <pre><code class="lang-bash"><span class="hljs-variable">$ </span>startserver
 </code></pre>
 <p>It also can be use it like this:</p>
@@ -149,12 +150,18 @@ hidden;cursor: pointer;width: 20%;height: 20%;background: rgba(128, 128, 128,
 <li>Generator support and compatible runtime.</li>
 </ul>
 <h2 id="cli-options">Cli Options</h2>
+<h4 id="-v-version">-v, --version</h4>
+<p>output version infomation</p>
 <h4 id="-s-silent">-s, --silent</h4>
-<p>Run server without open the default browser.</p>
+<p>start http server without opening browser</p>
 <h4 id="-g-generate">-g, --generate</h4>
-<p>Generate a static slider file. <a href="https://rawgit.com/xudafeng/startserver/master/README.md.html">[example]</a></p>
+<p>generate static slide file to markdown <a href="https://rawgit.com/xudafeng/startserver/master/README.md.html">[example]</a></p>
 <pre><code class="lang-bash">$ startsever -g README.<span class="hljs-built_in">md</span>
 </code></pre>
+<h4 id="-p-plugins">-p, --plugins</h4>
+<p>show plugin list</p>
+<h4 id="-d-disable">-d, --disable</h4>
+<p>disable default index router</p>
 <h2 id="help">Help</h2>
 <pre><code class="lang-bash"><span class="hljs-variable">$ </span>startserver -h
 </code></pre>

@@ -40,6 +40,8 @@ Use it for generator support, add this alias to your `.bash_profile`:
 alias node='node --harmony'
 ```
 
+Or use can use [io.js](https://iojs.org/cn/index.html) with out any flag now.
+
 ## Quick Start
 
 ``` bash
@@ -85,17 +87,30 @@ Generate slider with `README` doc or other markdown file.
 
 ## Cli Options
 
+#### -v, --version
+
+output version infomation
+
 #### -s, --silent
 
-Run server without open the default browser.
+start http server without opening browser
 
 #### -g, --generate
 
-Generate a static slider file. [[example]](https://rawgit.com/xudafeng/startserver/master/README.md.html)
+generate static slide file to markdown [[example]](https://rawgit.com/xudafeng/startserver/master/README.md.html)
 
 ``` bash
 $ startsever -g README.md
 ```
+
+#### -p, --plugins
+
+show plugin list
+
+#### -d, --disable
+
+disable default index router
+
 
 ## Help
 
