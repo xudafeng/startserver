@@ -1,3 +1,9 @@
+0.6.40 / 2015-2-11
+==================
+
+  * Support optional index router
+  * Bugfix markdown render
+
 0.6.36 / 2015-1-30
 ==================
 

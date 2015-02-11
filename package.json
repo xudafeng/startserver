@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "0.6.38",
+  "version": "0.6.40",
   "description": "Yet another http server",
   "preferGlobal": true,
   "bin": {
@@ -18,7 +18,7 @@
     "foc": "~0.1.6",
     "ipv4":"0.0.4",
     "microtemplate": "~0.1.2",
-    "marked": "~0.3.2",
+    "marked": "~0.3.3",
     "highlight.js": "~8.3.0",
     "colorx": "0.0.5",
     "logx": "0.0.4",
@@ -37,7 +37,8 @@
     "jshint": "*"
   },
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "jshint": "make jshint"
   },
   "homepage": "https://github.com/xudafeng/startserver",
   "author": "xudafeng",
@@ -45,6 +46,9 @@
     "karoo",
     "ottomao",
     "meowtec"
+  ],
+  "precommit": [
+    "jshint"
   ],
   "email": "xudafeng@126.com",
   "blog": "http://xdf.me",
