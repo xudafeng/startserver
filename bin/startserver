@@ -27,6 +27,7 @@ program
   .option('-s, --silent',   'start http server without opening browser')
   .option('-g, --generate', 'generate static slide file for markdown')
   .option('-p, --plugins',  'show plugin list')
+  .option('-d, --disable',  'disable default index router')
   .usage('[port 8080]')
   .parse(process.argv);
 
