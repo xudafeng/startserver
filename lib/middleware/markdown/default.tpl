@@ -26,7 +26,7 @@ body {padding: 0 20%; opacity: 0;transition: all 1s ease;}
   <input id="slide" type="radio" name="slide" value="false"/>
 </div>
 <script>
-(function(global, undefined) {
++function(global, undefined) {
   var invert = document.getElementById('invert');
   var isSlide = document.getElementById('slide').checked;
   function setCookie(name, value, expiresHours) {
@@ -47,7 +47,7 @@ body {padding: 0 20%; opacity: 0;transition: all 1s ease;}
   setTimeout(function() {
     document.body.style.opacity = 1;
   }, 16);
-})(this)
+}(this);
 </script>
 </body>
 </html>

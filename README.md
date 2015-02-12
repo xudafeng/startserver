@@ -20,7 +20,7 @@ startserver
 
 > Yet another http server.
 
-> And generate a slider easily.
+> And generate a slider so easily.
 
 ## Installation
 
@@ -40,7 +40,7 @@ Use it for generator support, add this alias to your `.bash_profile`:
 alias node='node --harmony'
 ```
 
-Or use can use [io.js](https://iojs.org/cn/index.html) with out any flag now.
+Or you'd better use [io.js](https://iojs.org/cn/index.html) as an alternative.
 
 ## Quick Start
 
@@ -54,11 +54,10 @@ It also can be use it like this:
 $ startserver 6789
 ```
 
-There are more shorter alias for cli:
+There are more shorter alias for it:
 
 ``` base
-$ start
-$ server
+$ startserver
 $ ss
 ```
 
@@ -66,7 +65,7 @@ $ ss
 
 ### Server Everywhere
 
-Run it in every directory under the root.
+Run it at every directory under the root.
 
   * Automatic detection of unoccupied port.
 
@@ -82,14 +81,10 @@ Generate slider with `README` doc or other markdown file.
 
 ### Others
 
-  * Original javascript source code.
   * Generator support and compatible runtime.
+  * Original javascript source code.
 
 ## Cli Options
-
-#### -v, --version
-
-output version infomation
 
 #### -s, --silent
 
@@ -111,12 +106,17 @@ show plugin list
 
 disable default index router
 
+#### -v, --version
+
+output version infomation
+
 
 ## Help
 
 ``` bash
 $ startserver -h
 ```
+[Related Groups](https://github.com/startserver)
 
 ## License
 

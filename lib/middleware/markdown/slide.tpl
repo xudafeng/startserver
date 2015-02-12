@@ -116,7 +116,7 @@ target="_blank">Startserver</a> <iframe
 src="http://ghbtns.com/github-btn.html?user=xudafeng&repo=startserver&type=watch&count=true"
 allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe></div>
 <script>
-(function(global, undefined) {
++function(global, undefined) {
   var isSlide = document.getElementById('slide').checked;
   var index = location.hash.split('=')[1] || 1;
   var left = document.getElementById('left');
@@ -299,7 +299,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
     direct('#page=' + index);
     document.body.style.opacity = 1;
   }, 16);
-})(this);
+}(this);
 </script>
 </body>
 </html>
