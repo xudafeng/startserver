@@ -1,15 +1,20 @@
 {
   "name": "startserver",
-  "version": "0.6.40",
+  "version": "0.6.42",
   "description": "Yet another http server",
   "preferGlobal": true,
   "bin": {
     "ss": "./bin/startserver",
-    "start": "./bin/startserver",
-    "server": "./bin/startserver",
     "startserver": "./bin/startserver"
   },
+  "author": "xudafeng",
+  "contributors": [
+    "karoo",
+    "ottomao",
+    "meowtec"
+  ],
   "main": "index.js",
+  "homepage": "http://startserver.github.io",
   "repository": {
     "type": "git",
     "url": "git://github.com/xudafeng/startserver.git"
@@ -40,13 +45,6 @@
     "test": "make test",
     "jshint": "make jshint"
   },
-  "homepage": "https://github.com/xudafeng/startserver",
-  "author": "xudafeng",
-  "contributors": [
-    "karoo",
-    "ottomao",
-    "meowtec"
-  ],
   "precommit": [
     "jshint"
   ],
@@ -54,3 +52,4 @@
   "blog": "http://xdf.me",
   "license": "MIT"
 }
+
