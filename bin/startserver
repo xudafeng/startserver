@@ -21,43 +21,43 @@ var program = require('commander');
 var logger = require('logx');
 
 var pkg = require('../package.json');
+var startserver = require('..');
 
 program
-  .option('-v, --versions', 'output version infomation')
   .option('-s, --silent',   'start http server without opening browser')
-  .option('-g, --generate', 'generate static slide file to markdown')
-  .option('-p, --plugins',  'show plugin list')
+  .option('-p, --port',     'port to use (8080 default)')
   .option('-d, --disable',  'disable default index router')
-  .usage('[port 8080]')
-  .parse(process.argv);
+  .option('-v, --versions', 'output version infomation')
+  .usage('[port 8080]');
+
+program
+  .command('plugins')
+  .description('show plugin list')
+  .action(function(env, options){
+    startserver.plugin();
+  });
+
+program
+  .command('generate [file]')
+  .description('generate static file')
+  .action(function(env, options){
+    if (env) {
+      startserver.generate(env);
+    } else {
+      logger.warn('Arguments Error.');
+      program.help();
+    }
+  });
+
+program.parse(process.argv);
 
 if (program.versions) {
   console.info('\n  ' + pkg.version.gray + '\n');
   process.exit(0);
 }
 
-var startserver = require('..');
-
-if (program.plugins) {
-  return startserver.plugins();
+if (!program.args[0] || parseInt(program.args[0]) || program.port) {
+  var port = parseInt(program.args[0]) || 8080;
+  program.pkg = pkg;
+  startserver.init(port, program);
 }
-
-if (program.generate) {
-  var args = program.args;
-
-  if (args.length !== 1) {
-    logger.warn('Arguments Error.');
-    return program.help();
-  }
-  return startserver.generate(args[0]);
-}
-
-var port = parseInt(program.args[0] || 8080);
-
-if (isNaN(port)) {
-  logger.warn('Arguments Error.'.red + '\n');
-  return program.help();
-}
-
-program.pkg = pkg;
-startserver.init(port, program);

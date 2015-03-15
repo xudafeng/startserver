@@ -1,27 +1,21 @@
 {
   "name": "startserver",
-  "version": "0.6.48",
+  "version": "1.0.2",
   "description": "Yet another http server",
-  "preferGlobal": true,
+  "keywords": ["server", "httpserver", "dev", "slider"],
+  "main": "index.js",
   "bin": {
     "ss": "./bin/startserver",
     "startserver": "./bin/startserver"
   },
-  "author": "xudafeng",
-  "contributors": [
-    "karoo",
-    "ottomao",
-    "meowtec"
-  ],
-  "main": "index.js",
-  "homepage": "http://startserver.github.io",
   "repository": {
     "type": "git",
     "url": "git://github.com/xudafeng/startserver.git"
   },
+  "preferGlobal": true,
   "dependencies": {
     "foc": "~0.1.6",
-    "ipv4":"0.0.4",
+    "ipv4": "0.0.4",
     "microtemplate": "~0.1.2",
     "marked": "~0.3.3",
     "highlight.js": "~8.3.0",
@@ -31,7 +25,6 @@
     "commander": "~2.0.0",
     "co-request": "~0.2.0"
   },
-  "keywords": ["server","httpserver","demo","dev","slider"],
   "devDependencies": {
     "ali.regenerator": "~0.4.12",
     "mocha": "*",
@@ -48,8 +41,14 @@
   "precommit": [
     "jshint"
   ],
+  "author": "xudafeng",
+  "contributors": [
+    "karoo",
+    "ottomao",
+    "meowtec"
+  ],
   "email": "xudafeng@126.com",
   "blog": "http://xdf.me",
+  "homepage": "http://startserver.github.io",
   "license": "MIT"
 }
-

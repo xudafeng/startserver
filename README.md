@@ -20,8 +20,6 @@ startserver
 
 > Yet another http server.
 
-> And generate a slider so easily.
-
 ## Installation
 
 ### Node requirement
@@ -57,7 +55,6 @@ $ startserver 6789
 There are more shorter alias for it:
 
 ``` base
-$ startserver
 $ ss
 ```
 
@@ -71,7 +68,7 @@ Run it at every directory under the root.
 
 ### Slider Revolution
 
-Generate slider with `README` doc or other markdown file.
+Generate slider with `README.md` file or other markdown file.
 
   * Suppor a inverse color style.
   * Double click for temporary modifications, again to restore.
@@ -84,23 +81,34 @@ Generate slider with `README` doc or other markdown file.
   * Generator support and compatible runtime.
   * Original javascript source code.
 
-## Cli Options
+## Commands
+
+#### plugins
+
+show plugin list
+
+#### generate
+
+``` bash
+$ startsever generate README.md
+```
+generate static slide file to markdown [[sample]](https://rawgit.com/xudafeng/startserver/master/README.md.html)
+
+## Plugins
+
+![logo](https://avatars3.githubusercontent.com/u/9607546?v=3&s=100)
+
+[plugins list](https://github.com/startserver)
+
+## Options
 
 #### -s, --silent
 
 start http server without opening browser
 
-#### -g, --generate
+#### -p, --port
 
-generate static slide file to markdown [[example]](https://rawgit.com/xudafeng/startserver/master/README.md.html)
-
-``` bash
-$ startsever -g README.md
-```
-
-#### -p, --plugins
-
-show plugin list
+port to use (8080 default)
 
 #### -d, --disable
 
@@ -110,14 +118,11 @@ disable default index router
 
 output version infomation
 
-
 ## Help
 
 ``` bash
 $ startserver -h
 ```
-[Related Groups](https://github.com/startserver)
-
 ## License
 
 The MIT License (MIT)
