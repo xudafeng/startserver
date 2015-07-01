@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Yet another http server",
   "keywords": ["server", "httpserver", "dev", "slider"],
   "main": "index.js",
@@ -30,16 +30,16 @@
     "mocha": "*",
     "co-mocha": "~1.0.2",
     "istanbul-harmony": "~0.3.0",
-    "should": "~4.0.4",
+    "should": "*",
     "should-http": "~0.0.2",
-    "jshint": "*"
+    "eslint": "~0.24.0"
   },
   "scripts": {
     "test": "make test",
-    "jshint": "make jshint"
+    "jslint": "make jslint"
   },
   "precommit": [
-    "jshint"
+    "jslint"
   ],
   "author": "xudafeng",
   "contributors": [

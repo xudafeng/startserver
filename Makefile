@@ -32,6 +32,6 @@ travis: install
 		${npm_bin}/_mocha \
 		--report lcovonly \
 		-- -t 20000 -r should-http test/*.test.js
-jshint:
-	@${npm_bin}/jshint .
+jslint:
+	@${npm_bin}/eslint .
 .PHONY: test
