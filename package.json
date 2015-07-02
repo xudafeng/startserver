@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Yet another http server",
   "keywords": ["server", "httpserver", "dev", "slider"],
   "main": "index.js",
@@ -19,8 +19,8 @@
     "microtemplate": "~0.1.2",
     "marked": "~0.3.3",
     "highlight.js": "~8.3.0",
-    "colorx": "0.0.5",
-    "logx": "0.0.4",
+    "colorx": "~0.0.5",
+    "logx": "~0.0.4",
     "ecmascript6": "~0.1.2",
     "commander": "~2.0.0",
     "co-request": "~0.2.0"
