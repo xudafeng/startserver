@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Yet another http server",
   "keywords": ["server", "httpserver", "dev", "slider"],
   "main": "index.js",
