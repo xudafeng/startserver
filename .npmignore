@@ -8,3 +8,5 @@ Makefile
 coverage/
 *.html
 plugins/
+*.sw*
+*.un~

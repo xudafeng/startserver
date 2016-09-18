@@ -1,5 +1,4 @@
-startserver
-===========
+# startserver
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
@@ -28,7 +27,7 @@ startserver
 
 ### Install from npm
 
-``` bash
+```shell
 $ npm i startserver -g
 ```
 
@@ -42,19 +41,19 @@ Or you'd better use [io.js](https://iojs.org/cn/index.html) as an alternative.
 
 ## Quick Start
 
-``` bash
+```shell
 $ startserver
 ```
 
 It also can be use it like this:
 
-``` base
+```shell
 $ startserver 6789
 ```
 
 There are more shorter alias for it:
 
-``` base
+```shell
 $ ss
 ```
 
@@ -89,7 +88,7 @@ show plugin list
 
 #### generate
 
-``` bash
+```shell
 $ startsever generate README.md
 ```
 generate static slide file to markdown [[sample]](https://rawgit.com/xudafeng/startserver/master/README.md.html)
@@ -128,7 +127,7 @@ output version infomation
 
 ## Help
 
-``` bash
+```shell
 $ startserver -h
 ```
 ## License
