@@ -3,11 +3,11 @@
 var path = require('path');
 var CliTest = require('command-line-test');
 
-var StartServer = require('../build/server');
-var logger = require('../build/middleware/logger');
-var markdown = require('../build/middleware/markdown');
-var statics = require('../build/middleware/static');
-var directory = require('../build/middleware/directory');
+var StartServer = require('../lib/server');
+var logger = require('../lib/middleware/logger');
+var markdown = require('../lib/middleware/markdown');
+var statics = require('../lib/middleware/static');
+var directory = require('../lib/middleware/directory');
 
 var pkg = require('../package');
 
