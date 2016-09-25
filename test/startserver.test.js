@@ -1,13 +1,19 @@
 'use strict';
 
+var path = require('path');
+var CliTest = require('command-line-test');
+
 var StartServer = require('../build/server');
 var logger = require('../build/middleware/logger');
 var markdown = require('../build/middleware/markdown');
 var statics = require('../build/middleware/static');
 var directory = require('../build/middleware/directory');
 
+var pkg = require('../package');
+
 describe('/build/server.js', function() {
   var server;
+
   describe('main', function () {
     it('should has not error', function() {
       var error;
@@ -19,11 +25,13 @@ describe('/build/server.js', function() {
       (typeof error === 'undefined').should.be.true;
     });
   });
+
   describe('stack', function() {
     it('init function must have this members', function() {
       server.stack.should.have.length(0);
     });
   });
+
   describe('middleware', function() {
     it('should be ok', function() {
       server
@@ -32,6 +40,16 @@ describe('/build/server.js', function() {
       .bundle(statics)
       .bundle(directory);
       server.stack.should.have.length(4);
+    });
+  });
+
+  describe('middleware', function() {
+    it('command line tool should be ok', function *() {
+      var cliTest = new CliTest();
+      var binFile = path.resolve(pkg.bin['startserver']);
+
+      var res = yield cliTest.execFile(binFile, ['-v'], {});
+      res.stdout.should.be.containEql(pkg.version);
     });
   });
 });
