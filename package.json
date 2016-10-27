@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "1.2.4",
+  "version": "1.2.6",
   "description": "Yet another http server",
   "keywords": [
     "server",
@@ -27,7 +27,8 @@
     "ipv4": "0.0.4",
     "logx": "~0.0.4",
     "marked": "~0.3.3",
-    "microtemplate": "~0.1.2"
+    "microtemplate": "~0.1.2",
+    "ws": "^1.1.1"
   },
   "devDependencies": {
     "co-mocha": "^1.1.3",
