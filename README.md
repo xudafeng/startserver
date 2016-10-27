@@ -31,14 +31,6 @@
 $ npm i startserver -g
 ```
 
-Use it for generator support, add this alias to your `.bash_profile`:
-
-```
-alias node='node --harmony'
-```
-
-Or you'd better use [io.js](https://iojs.org/cn/index.html) as an alternative.
-
 ## Quick Start
 
 ```shell
@@ -74,6 +66,7 @@ Generate slider with `README.md` file or other markdown file.
   * Normal to read makedown.
   * Highlight for your code block.
   * Thumbnail mode provided.
+  * Watching markdown file.
 
 ### Others
 
@@ -91,6 +84,7 @@ show plugin list
 ```shell
 $ startsever generate README.md
 ```
+
 generate static slide file to markdown [[sample]](https://rawgit.com/xudafeng/startserver/master/README.md.html)
 
 ## Plugins
@@ -130,6 +124,7 @@ output version infomation
 ```shell
 $ startserver -h
 ```
+
 ## License
 
 The MIT License (MIT)

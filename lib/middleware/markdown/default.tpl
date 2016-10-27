@@ -16,6 +16,7 @@ body {padding: 0 20%; opacity: 0;transition: all 1s ease;}
 <base target="_blank"/>
 </head>
 <body>
+<input id="socketPort" value="<#=socketPort#>" type="hidden" />
 <div id="page" class="markdown">
 <#=content#>
 </div>
@@ -31,9 +32,9 @@ body {padding: 0 20%; opacity: 0;transition: all 1s ease;}
   var isSlide = document.getElementById('slide').checked;
   function setCookie(name, value, expiresHours) {
     var cookieString = name + '=' + escape(value);
-    if ( expiresHours > 0 ) {
+    if (expiresHours > 0) {
       var date = new Date();
-      date.setTime( date.getTime + expiresHours * 3600 * 1000);
+      date.setTime(date.getTime + expiresHours * 3600 * 1000);
       cookieString = cookieString + '; expires=' + date.toGMTString();
     }
     document.cookie = cookieString;
@@ -47,6 +48,12 @@ body {padding: 0 20%; opacity: 0;transition: all 1s ease;}
   setTimeout(function() {
     document.body.style.opacity = 1;
   }, 16);
+  var socketPort = document.getElementById('socketPort').value;
+  var ws = new WebSocket('ws://localhost:' + socketPort);
+  ws.onmessage = function(e) {
+    var data = e.data;
+    document.getElementById('page').innerHTML = data;
+  };
 }(this);
 </script>
 </body>

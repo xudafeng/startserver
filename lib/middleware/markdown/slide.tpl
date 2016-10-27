@@ -144,7 +144,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px
 
     if (expiresHours > 0) {
       var date = new Date();
-      date.setTime( date.getTime + expiresHours * 3600 * 1000);
+      date.setTime(date.getTime + expiresHours * 3600 * 1000);
       cookieString = cookieString + ';expires=' + date.toGMTString();
     }
     document.cookie = cookieString;
