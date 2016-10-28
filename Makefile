@@ -19,6 +19,6 @@ travis: install
 		$(REQUIRED) \
 		$(TESTS) \
 		--bail
-jshint:
-	@${npm_bin}/jshint .
+eslint:
+	@${npm_bin}/eslint .
 .PHONY: test

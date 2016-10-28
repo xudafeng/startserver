@@ -41,10 +41,10 @@
   },
   "scripts": {
     "test": "make test",
-    "jslint": "make jslint"
+    "eslint": "make eslint"
   },
   "precommit": [
-    "jslint"
+    "eslint"
   ],
   "author": "xudafeng",
   "contributors": [
