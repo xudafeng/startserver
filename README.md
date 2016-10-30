@@ -21,12 +21,6 @@
 
 ## Installation
 
-### Node requirement
-
-\>= 0.10.x
-
-### Install from npm
-
 ```shell
 $ npm i startserver -g
 ```
@@ -40,7 +34,7 @@ $ startserver
 It also can be use it like this:
 
 ```shell
-$ startserver 6789
+$ startserver -p 6789
 ```
 
 There are more shorter alias for it:
@@ -91,7 +85,7 @@ generate static slide file to markdown [[sample]](https://rawgit.com/xudafeng/st
 
 ![logo](https://avatars3.githubusercontent.com/u/9607546?v=3&s=100)
 
-[plugins list](https://github.com/startserver)
+[plugins list](//github.com/startserver)
 
 ## Options
 
