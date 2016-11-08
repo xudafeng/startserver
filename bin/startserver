@@ -17,11 +17,11 @@
 process.title = 'startserver';
 
 require('colorx');
-var logger = require('logx');
-var startserver = require('..');
 var program = require('commander');
+var logger = require('logx');
 
 var pkg = require('../package.json');
+var startserver = require('..');
 
 program
   .option('-s, --silent',   'start http server without opening browser')
