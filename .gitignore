@@ -7,5 +7,6 @@ coverage/
 .project
 build/
 plugins/
+.nyc_output/
 *.sw*
 *.un~

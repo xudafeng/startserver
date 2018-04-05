@@ -34,27 +34,21 @@
     "co-mocha": "^1.1.3",
     "command-line-test": "^1.0.3",
     "eslint": "~0.24.0",
-    "istanbul-harmony": "~0.3.0",
+    "git-contributor": "^1.0.5",
     "mocha": "*",
+    "nyc": "^11.6.0",
     "pre-commit": "^1.1.3",
     "should": "*",
     "should-http": "~0.0.2"
   },
   "scripts": {
-    "test": "make test",
-    "eslint": "make eslint"
+    "test": "nyc --reporter=lcov --reporter=text mocha",
+    "lint": "eslint .",
+    "contributor": "git-contributor"
   },
   "precommit": [
-    "eslint"
+    "lint"
   ],
-  "author": "xudafeng",
-  "contributors": [
-    "karoo",
-    "ottomao",
-    "meowtec"
-  ],
-  "email": "xudafeng@126.com",
-  "blog": "http://xdf.me",
   "homepage": "http://startserver.github.io",
   "license": "MIT"
 }
