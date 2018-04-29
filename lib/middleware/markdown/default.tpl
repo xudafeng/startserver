@@ -48,12 +48,15 @@ body {padding: 0 20%; opacity: 0;transition: all 1s ease;}
   setTimeout(function() {
     document.body.style.opacity = 1;
   }, 16);
-  var socketPort = document.getElementById('socketPort').value;
-  var ws = new WebSocket('ws://localhost:' + socketPort);
-  ws.onmessage = function(e) {
-    var data = e.data;
-    document.getElementById('page').innerHTML = data;
-  };
+  try {
+    var socketPort = document.getElementById('socketPort').value;
+    var ws = new WebSocket('ws://localhost:' + socketPort);
+    ws.onmessage = function(e) {
+      var data = e.data;
+      document.getElementById('page').innerHTML = data;
+    };
+  } catch (e) {
+  }
 }(this);
 </script>
 </body>
