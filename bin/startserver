@@ -29,6 +29,7 @@ program
   .option('-f, --pdf',      'render markdown file with pdf style')
   .option('-p, --port',     'port to use (8080 default)')
   .option('-d, --disable',  'disable default index router')
+  .option('-c, --cors',  'allow Cross-Origin Resource Sharing(CORS)')
   .option('-v, --versions', 'output version infomation')
   .usage('[port 8080]');
 
