@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Yet another http server",
   "keywords": [
     "server",
@@ -12,6 +12,12 @@
     "ss": "./bin/startserver",
     "startserver": "./bin/startserver"
   },
+  "files": [
+    "index.js",
+    "bin/*",
+    "lib/**/*.js",
+    "lib/**/*.tpl"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/xudafeng/startserver.git"
