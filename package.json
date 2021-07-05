@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "1.3.8",
+  "version": "1.4.0",
   "description": "Yet another http server",
   "keywords": [
     "server",
@@ -34,7 +34,7 @@
     "co-mocha": "^1.1.3",
     "command-line-test": "^1.0.3",
     "eslint": "~0.24.0",
-    "git-contributor": "^1.0.7",
+    "git-contributor": "1",
     "mocha": "*",
     "nyc": "^11.6.0",
     "pre-commit": "^1.1.3",
