@@ -1,6 +1,6 @@
 {
   "name": "startserver",
-  "version": "1.4.1",
+  "version": "2.0.1",
   "description": "Yet another http server",
   "keywords": [
     "server",
@@ -9,8 +9,8 @@
   ],
   "main": "index.js",
   "bin": {
-    "ss": "./bin/startserver",
-    "startserver": "./bin/startserver"
+    "ss": "./bin/ss-2.js",
+    "startserver": "./bin/ss-2.js"
   },
   "files": [
     "index.js",
@@ -26,7 +26,7 @@
   "dependencies": {
     "co-request": "~0.2.0",
     "colorx": "~0.0.5",
-    "commander": "~2.0.0",
+    "commander": "^12.0.0",
     "detect-port": "^1.2.0",
     "foc": "~0.1.6",
     "highlight.js": "~8.3.0",
@@ -34,6 +34,7 @@
     "logx": "~0.0.4",
     "marked": "~0.3.3",
     "microtemplate": "~0.1.2",
+    "open": "^8.4.2",
     "ws": "^1.1.1"
   },
   "devDependencies": {
